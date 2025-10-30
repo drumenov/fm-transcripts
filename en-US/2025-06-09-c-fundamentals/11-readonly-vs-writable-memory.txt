@@ -1,8 +1,8 @@
 [00:00:00]
->> Richard Feldman: We've now got our const char for the DEFAULT_FILE, which is called index.html. We've got our two path function, which takes in the request and then actually mutates it in place, and then ends up returning it. And then back in main, we have char *req = blah, blah, blah.
+>> Richard Feldman: We've now got our const char for the DEFAULT_FILE, which is called index.html. We've got our to_path function, which takes in the request and then actually mutates it in place, and then ends up returning it. And then back in main, we have char *req = blah, blah, blah.
 
 [00:00:14]
-So then we're gonna call char *path = to path (req), and then this is gonna give us the memory address of that thing. It's gonna do those two for loops that we wrote. It's gonna translate all this back into path.html, this is gonna return the memory address of the beginning of our brand new blog/index.html, which as we know is in the giant global mutable array that is memory.
+So then we're gonna call char *path = to_path (req), and then this is gonna give us the memory address of that thing. It's gonna do those two for loops that we wrote. It's gonna translate all this back into path.html, this is gonna return the memory address of the beginning of our brand new blog/index.html, which as we know is in the giant global mutable array that is memory.
 
 [00:00:39]
 It's actually like these bytes right here because we went and just stomped all over this initial request and wrote the index.html right here. And then got back this address right here that's the beginning of this thing which all works totally reasonably, it's just really not what I would do in most languages.
@@ -46,13 +46,13 @@ That is a potential reason that they wanna do that is they want to explicitly sa
 And there was that little gotcha there of the, if you define the function before, sorry, if you call the function before it's defined, you'll get a compiler error. There's two ways to resolve that. Either you can just move it up earlier so that it's defined before it gets called, or you can forward declare it with a semicolon.
 
 [00:04:09]
-Just write out the type and the name of the function, put a semicolon at the end, either way works. Talked about, two different styles of iteration. We saw the wild loop where we just sort of advancing the memory address of the start and the end of the path.
+Just write out the type and the name of the function, put a semicolon at the end, either way works. Talked about, two different styles of iteration. We saw the while loop where we just sort of advancing the memory address of the start and the end of the path.
 
 [00:04:21]
 Talked about copying memory with the memcopy function. So we're just taking some bytes that we got, as long as they're not in the read-only section, and just stomping all over them, just saying, yeah, just here's my source, here's my destination, boom. Just put these bytes over here now.
 
 [00:04:33]
-And then finally, we talked about read-only memory. So putting all these things together, we were able to take that part of the request and translate it from slash blog in the middle of this like get an HTTP 1.1 all these headers, and get back out the string that we want, which is blog, slash index, dot HTML.
+And then finally, we talked about read-only memory. So putting all these things together, we were able to take that part of the request and translate it from slash blog in the middle of this like get and HTTP 1.1 all these headers, and get back out the string that we want, which is blog/index.html.
 
 [00:04:51]
 Whether or not it had a slash at the end of the blog in the first place. Cool, any questions before we get into the exercises.
@@ -72,7 +72,7 @@ Whether or not it had a slash at the end of the blog in the first place. Cool, a
 So this is where the actual type comes into play and makes a difference. So for example, if I said instead of char star, I said int star, what that would affect is that would affect what bracket zero means. So that would mean bracket zero says int is 32 bits, whereas char is eight bits start bracket zero, if start is a char star, means go get me those eight bits and put them right here.
 
 [00:05:59]
-So give me one byte and put it right here. If I change this to instar and change nothing else about the program, well, first of all, I'd get a compiler error because it would say type mismatch here. I'd have to cast it to instar, but if I cast it to instar, it would still be the same exact integer in memory, this is the bytes of the beginning of that thing.
+So give me one byte and put it right here. If I change this to int star and change nothing else about the program, well, first of all, I'd get a compiler error because it would say type mismatch here. I'd have to cast it to int star, but if I cast it to int star, it would still be the same exact integer in memory, this is the bytes of the beginning of that thing.
 
 [00:06:15]
 And that byte the address is exactly the same, no matter whether I'm treating it as a char star, int star, or any other kind of star. The important part here is that the bracket zero is gonna say, either, go get me eight bytes from char star, or if it's int, it's gonna say, go get me 32 bytes.

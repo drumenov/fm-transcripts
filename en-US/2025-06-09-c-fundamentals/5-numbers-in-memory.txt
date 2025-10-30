@@ -2,7 +2,7 @@
 >> Richard feldman: Building HTTP responses. In this section, we're going to start building our actual static web server. We're not gonna start by having it up and running, listening on port 8080, whatever. We're just gonna do it a much simpler way, where at first we're just gonna work with strings.
 
 [00:00:15]
-So we're gonna build HTTP responses first, and then the next section we're gonna work with dealing with the incoming HTTP requests, still just working with strings. Then we're gonna get into file IO, cuz one of the things that static web server needs to do is to read the files off your disc.
+So we're gonna build HTTP responses first, and then the next section we're gonna work with dealing with the incoming HTTP requests, still just working with strings. Then we're gonna get into file IO, cuz one of the things that static web server needs to do is to read the files off your disk.
 
 [00:00:27]
 And then finally, we're gonna get to the network IO portion of this. So for now, we're just gonna start off working with strings and learn a little bit more about how C deals with string manipulation and learn a little bit more about the language as we go. So we're gonna start off by talking about numbers in memory.
@@ -20,7 +20,7 @@ The CPU just has instructions that basically say like, hey, tell me some ones an
 And it's like, sure, here are the ones and zeros that come out of adding those two together. You could also say the same exact pattern of ones and zeros. Hey, CPU, please treat these as a floating point number and do floating point multiplication or division on them, or something like that.
 
 [00:01:42]
-And the CPU is like, sure, you're the ones and zeros that come out if you do that. Or you could say, treat it as a string, and I'm gonna do something else with it. But most commonly, these ones and zeros are actually grouped into groups of eight, at least in modern hardware.
+And the CPU is like, sure, here are the ones and zeros that come out if you do that. Or you could say, treat it as a string, and I'm gonna do something else with it. But most commonly, these ones and zeros are actually grouped into groups of eight, at least in modern hardware.
 
 [00:01:53]
 So 8-bits to a byte. So 8 individual 1s and 0s correspond to 1-byte. And in modern hardware, this is sort of emerged as the standard, where you basically have like, if you're working with memory, you're generally working in terms of bytes. When we specified 13 or 14 as the length of the Hello World string in the last exercise, that was 13 or 14-bytes.
@@ -71,7 +71,7 @@ So we flip over to one more. We add one more digit over in the next column, over
 For example, instead of interpreting them in groups of eight, where we have like, this is the number 0. This is the number 1. This is 2, and this is 3. We can say, okay, I'm actually gonna take these same exact pattern of 1s and 0s and I'm gonna chop it up differently.
 
 [00:06:06]
-And I'm gonna say, well, actually, I wanna chop it right in the middle here. Instead of having groups of 8, I'm gonna have like groups of 16 and this one is gonna be 1, and then this one's gonna be,1027. Or chop it up in the middle here, and say sorry, and not chop up at all, and just say, this is one gigantic number.
+And I'm gonna say, well, actually, I wanna chop it right in the middle here. Instead of having groups of 8, I'm gonna have like groups of 16 and this one is gonna be 1, and then this one's gonna be,1027. Or chop it up in the middle here, and say... Sorry, and not chop up at all, and just say, this is one gigantic number.
 
 [00:06:21]
 And so this, this whole thing is like, this one right here gives us 131072, this one gives us 1024, and this, two 1s at the end give us 3, just like they did back up here. And now we have some gigantic integer. So this is a way that you can take exactly the same piece of memory and represents it in multiple different ways.

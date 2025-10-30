@@ -29,16 +29,16 @@ these like the original internet,
 
 7
 00:00:15.306 --> 00:00:18.721
-like the precursor to the worldwide web,
+like the precursor to the world wide web,
 this is how old school this stuff was.
 
 8
 00:00:18.721 --> 00:00:20.587
-Like they were using C in fact.
+Like they were using C in fact
 
 9
 00:00:20.587 --> 00:00:21.588
-On the arpa/inet.
+on the ARPANET.
 
 10
 00:00:21.588 --> 00:00:24.927
@@ -77,8 +77,8 @@ happening on port 8080.
 
 18
 00:00:40.272 --> 00:00:44.602
-So, if I go to local host 80 80,
-it says, hey, this is the root /page.
+So, if I go to localhost:8080,
+it says, hey, this is the root / page.
 
 19
 00:00:44.602 --> 00:00:46.140
@@ -98,7 +98,7 @@ Index.html, right?
 
 23
 00:00:56.917 --> 00:00:58.721
-So, this is the root/page.
+So, this is the root / page.
 
 24
 00:00:58.721 --> 00:01:01.270
@@ -177,11 +177,11 @@ are a little bit funky.
 40
 00:01:38.311 --> 00:01:40.565
 Yes, we're doing a lot of weird
-stomping all over memory kind of tech.
+stomping all over memory kind of
 
 41
 00:01:40.565 --> 00:01:45.269
-Techniques in here, but if you want to
+techniques in here, but if you want to
 get down to it and like really like get
 
 42
@@ -191,7 +191,7 @@ this is what that looks like, all right.
 
 43
 00:01:49.910 --> 00:01:52.653
-Now I do want to notice,
+Now I do want to note this,
 sorry, that was from earlier.
 
 44
@@ -212,7 +212,7 @@ I didn't actually go over the.
 47
 00:02:00.978 --> 00:02:03.945
 Part of the code where we are,
-in some cases we're turning at 500, so
+in some cases we're returning 500, so
 
 48
 00:02:03.945 --> 00:02:05.271
@@ -286,7 +286,7 @@ going to get one of these things,
 63
 00:02:45.873 --> 00:02:48.553
 then by default, what you're going
-to get is some sort of error.
+to get is some short of error.
 
 64
 00:02:48.553 --> 00:02:51.105
@@ -328,7 +328,7 @@ does take the request and the socket and
 
 72
 00:03:14.950 --> 00:03:16.379
-like calls to path on it.
+like calls to_path on it.
 
 73
 00:03:16.379 --> 00:03:18.883
@@ -337,7 +337,7 @@ split out a helper function, so we can
 
 74
 00:03:18.883 --> 00:03:21.957
-sort of isolate the request quest handling
+sort of isolate the request handling
 code in here, just for code organization.
 
 75
@@ -429,7 +429,7 @@ let's go through the solution.
 93
 00:04:32.950 --> 00:04:37.848
 Okay, so a bunch of the stuff unchanged
-from previous like two path works the same
+from previous like to_path works the same
 
 94
 00:04:37.848 --> 00:04:39.879
@@ -464,8 +464,8 @@ So what does that mean?
 
 101
 00:04:53.640 --> 00:04:57.221
-This means that when we called to path,
-to path, returned null.
+This means that when we called to_path,
+to_path, returned null.
 
 102
 00:04:57.221 --> 00:05:01.291
@@ -474,7 +474,7 @@ same kind of C style error handling.
 
 103
 00:05:01.291 --> 00:05:05.479
-That we've seen in all these PIs we've
+That we've seen in all these APIs we've
 been using, where basically you may
 
 104
@@ -504,7 +504,7 @@ that means this is an invalid request, and
 
 109
 00:05:24.044 --> 00:05:26.039
-two path would have returned null.
+to_path would have returned null.
 
 110
 00:05:26.039 --> 00:05:29.985
@@ -547,12 +547,12 @@ the file descriptor.
 
 118
 00:05:51.326 --> 00:05:53.040
-So, this is gonna be socket FD.
+So, this is gonna be socket_fd.
 
 119
 00:05:53.040 --> 00:05:58.245
 And then basically if we want, we can do
-like the know, sterling of that thing.
+like the, you know, strlen of that thing.
 
 120
 00:05:58.245 --> 00:06:02.352
@@ -654,7 +654,7 @@ I might need to do that over again.
 
 141
 00:07:05.153 --> 00:07:09.250
-Okay, I'm gonna local host for
+Okay, I'm gonna localhost for
 yeah /foo not touching the keyboard.
 
 142
@@ -668,7 +668,7 @@ So what's going on there?
 
 144
 00:07:13.572 --> 00:07:17.216
-Why did we just get a 404 on my
+Why did we just get a 404 while my
 hands weren't even on the keyboard.
 
 145
@@ -701,7 +701,7 @@ So run this on a different one.
 151
 00:07:38.117 --> 00:07:40.411
 It's basically, hey,
-HTTP request sent a rating response,
+HTTP request sent a awaiting response,
 
 152
 00:07:40.411 --> 00:07:42.763
@@ -776,7 +776,7 @@ I'm just gonna follow exactly the same
 167
 00:08:16.467 --> 00:08:20.834
 pattern that I did back there, where I'm
-just gonna write to but instead of error
+just gonna write to this, but instead of error
 
 168
 00:08:20.834 --> 00:08:25.429
@@ -808,7 +808,7 @@ Okay, there we go, cool.
 174
 00:08:40.696 --> 00:08:45.453
 I'm using Zed's fancy autocomplete there,
-so I to save myself some typing there,
+so I had to save myself some typing there,
 
 175
 00:08:45.453 --> 00:08:48.470
@@ -831,7 +831,7 @@ more semantically familiar.
 179
 00:08:58.380 --> 00:09:01.116
 If I go to localhost.com,
-port 88/foo, we get, hey,
+port 8080/foo, we get, hey,
 
 180
 00:09:01.116 --> 00:09:04.866
@@ -901,7 +901,7 @@ this one's gonna be a 500 error.
 
 195
 00:09:34.739 --> 00:09:36.009
-This is like if fsat failed.
+This is like if fstat failed.
 
 196
 00:09:36.009 --> 00:09:39.596
@@ -950,7 +950,7 @@ This is just a magical global.
 
 206
 00:10:01.900 --> 00:10:06.782
-And the way that errorno works,
+And the way that errno works,
 it's sort of like error number is when
 
 207
@@ -961,7 +961,7 @@ error in a particular way.
 208
 00:10:10.604 --> 00:10:12.998
 The way that you check whether this
-function failed was look at it as a string
+function failed was look at its return
 
 209
 00:10:12.998 --> 00:10:14.181
@@ -970,7 +970,7 @@ value and see if it was negative one.
 210
 00:10:14.181 --> 00:10:17.450
 If it was negative one, then you go look
-at errorno before calling another function
+at errno before calling another function
 
 211
 00:10:17.450 --> 00:10:19.802
@@ -979,7 +979,7 @@ you're gonna be in big trouble.
 
 212
 00:10:19.802 --> 00:10:21.885
-Because it's gonna stop all over it.
+Because it's gonna stomp all over it.
 
 213
 00:10:21.885 --> 00:10:24.645
@@ -1018,7 +1018,7 @@ basically means file was not found.
 
 220
 00:10:43.077 --> 00:10:45.016
-So, if you ever use no JS,
+So, if you ever use Node.js,
 you actually can see this.
 
 221
@@ -1028,11 +1028,11 @@ the console, like an error,
 
 222
 00:10:47.197 --> 00:10:48.747
-like, no end, or something like that.
+like, ENOENT, or something like that.
 
 223
 00:10:48.747 --> 00:10:53.659
-And that's because no JS is sort
+And that's because Node.js is sort
 of uncritically passed along
 
 224
@@ -1047,13 +1047,13 @@ we're like, okay, 404, meaning not found.
 
 226
 00:11:00.418 --> 00:11:03.732
-So, this bit basically means like
+So, this basically means like
 we attempted to open that path.
 
 227
 00:11:03.732 --> 00:11:08.031
-So in this case, when I went to local host
-8080/foo, we'd be coming through here.
+So in this case, when I went to
+localhost:8080/foo, we'd be coming through here.
 
 228
 00:11:08.031 --> 00:11:09.869
@@ -1070,12 +1070,12 @@ when I try to open that, this fails.
 
 231
 00:11:15.761 --> 00:11:20.215
-FD is negative one errorno is set to Eno,
+FD is negative one errno is set to ENOENT,
 end, meaning that it was file not found.
 
 232
 00:11:20.215 --> 00:11:23.533
-And therefore we know to send, backup 404.
+And therefore we know to send back a 404.
 
 233
 00:11:23.533 --> 00:11:26.991
@@ -1090,7 +1090,7 @@ like a permissions issue, or something,
 235
 00:11:29.970 --> 00:11:33.214
 then we're gonna call that an internal
-server error, and send backup 500.
+server error, and send back a 500.
 
 236
 00:11:33.214 --> 00:11:34.670
@@ -1156,15 +1156,15 @@ pass along the return value of the write.
 
 249
 00:12:12.883 --> 00:12:16.491
-So that's an size t.
+So that's an ssize_t.
 
 250
 00:12:16.491 --> 00:12:18.326
-And I'll just call this like write 500.
+And I'll just call this like write_500.
 
 251
 00:12:18.326 --> 00:12:23.646
-So, it takes socket, int, socket, good.
+So, it takes socket, int, socket_fd, good.
 
 252
 00:12:23.646 --> 00:12:27.696
@@ -1182,7 +1182,7 @@ We know that.
 255
 00:12:30.479 --> 00:12:34.264
 So basically, what I'm gonna do is I'm
-gonna say return, whatever right return.
+gonna say return, whatever write returns.
 
 256
 00:12:34.264 --> 00:12:37.667
@@ -1200,7 +1200,7 @@ So now that we have.
 
 259
 00:12:41.563 --> 00:12:49.347
-I can replace this with that socket-fd,
+I can replace this with that socket_fd,
 okay, great.
 
 260
@@ -1253,7 +1253,7 @@ Okay, so we can do that.
 
 271
 00:13:11.890 --> 00:13:14.170
-Or we could have write 500 return
+Or we could have write_500 return
 negative one and just return that.
 
 272
@@ -1315,7 +1315,7 @@ get to start the server.
 284
 00:13:45.835 --> 00:13:46.881
 &gt;&gt; Richard Feldman: Yeah.
-&gt;&gt; Speaker 3: Probably the most thing.
+&gt;&gt; Speaker 3: Probably we're not even listening.
 
 285
 00:13:46.881 --> 00:13:50.258
@@ -1385,7 +1385,7 @@ Content too large.
 
 299
 00:14:41.358 --> 00:14:46.396
-the right, great.
+the write, great.
 
 300
 00:14:46.396 --> 00:14:51.450
@@ -1432,7 +1432,7 @@ example, it's pretty easy to induce, say,
 
 309
 00:15:16.895 --> 00:15:18.198
-like, addresses and use.
+like, address is in use.
 
 310
 00:15:18.198 --> 00:15:24.156
@@ -1446,7 +1446,7 @@ Was around 5, yeah examples exercise yeah.
 312
 00:15:31.213 --> 00:15:33.258
 So, it says, like,
-bind failed address and use.
+bind failed address in use.
 
 313
 00:15:33.258 --> 00:15:34.888
@@ -1487,7 +1487,7 @@ takes us, that changes the URL to /blog,
 321
 00:15:53.582 --> 00:15:56.335
 which also works cause we
-have /blog/inject.html.
+have /blog/index.html.
 
 322
 00:15:56.335 --> 00:15:57.745
@@ -1561,7 +1561,7 @@ our requests, or sorry,
 337
 00:16:32.184 --> 00:16:36.328
 our response headers is we're
-just doing HTP 1.1 200, okay.
+just doing HTTP 1.1 200, okay.
 
 338
 00:16:36.328 --> 00:16:39.291
@@ -1571,7 +1571,7 @@ response header whatsoever, and
 339
 00:16:39.291 --> 00:16:43.067
 the browser uses those headers like
-content types specifically to figure out
+content type specifically to figure out
 
 340
 00:16:43.067 --> 00:16:44.764
@@ -1585,7 +1585,7 @@ I say, hey, this is a CSS file,
 342
 00:16:48.184 --> 00:16:51.785
 it's not gonna just be like, well that
-is a dot CSS, I bet it's a CSS file.
+ends in .CSS, I bet it's a CSS file.
 
 343
 00:16:51.785 --> 00:16:55.215

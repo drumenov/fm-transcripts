@@ -11,13 +11,13 @@ And they are cache and validation, naming things on off-by-one errors. This is a
 Here, we have index.html is what we expect, but again, there's this, there's that /index.html. And then finally, this last one we want to be null, but instead it's /blog/index.html. So in this exercise, we're basically gonna be doing some bug fixing. Okay, so this right here might look familiar from the slides, this is exactly the same stuff we're doing there.
 
 [00:01:13]
-We have char *start and end. We've got our to_path functions taking in the request address, right? The for loop, where we start off at the beginning of the request, we keep going until we hit a space, just start++ along the way. If we encounter a null byte, which we're using the syntax for that, then really return null rather than continuing to read past the end of the string.
+We have char *start and end. We've got our to_path functions taking in the request address, right? The for loop, where we start off at the beginning of the request, we keep going until we hit a space, just start++ along the way. If we encounter a null byte, which we're using the bang syntax for that, then we early return null rather than continuing to read past the end of the string.
 
 [00:01:31]
 We skip over the space right there in the GET request, and then we keep going to end begins at start, and then we just keep progressing best there. And then finally, we have this little bit of logic there that's basically saying, okay, if we end in a slash, like we got to get for a /blog/, that's fine, just move the sort of where we're ending back 1 so that we're now on the slash.
 
 [00:01:56]
-If we didn't have a slash there, then we're gonna write 1 into the original string. And then finally, we do the memcpy, where we're basically overwriting whatever was in the request string originally to get the index.html plus the null terminator. So two things we're gonna do here, one is a little refactor.
+If we didn't have a slash there, then we're gonna write one into the original string. And then finally, we do the memcpy, where we're basically overwriting whatever was in the request string originally to get the index.html plus the null terminator. So two things we're gonna do here, one is a little refactor.
 
 [00:02:15]
 So this is not gonna be a bug fix, but it's basically, hey, try refactoring out this +1 by modifying the 'if/else' above. So there's another way you could express this so that the math works out to be the same thing. We're just basically making end be in terms of something else, and that's a totally reasonable way to do it.
@@ -60,7 +60,7 @@ So something to be aware of. Okay, so we did that refactor. Now we're going to t
 So again, no guardrails, if we don't remember to copy over the null terminator, we're just gonna keep reading that memory until we encounter our actual null terminator there. Cool, okay, and then now we come to our actual bug. So these three don't currently trim off the leading slash.
 
 [00:06:27]
-So what we wanna do is modify to path to fix them. So right now we're saying, okay, GET /blog, HTTP, blah, blah, blah, okay? And what this should be is blog/index.html without the slash in front of it, but when we run the program, it's /blog/index.html. So essentially, again, we have an off-by-one error here.
+So what we wanna do is modify to_path to fix them. So right now we're saying, okay, GET /blog, HTTP, blah, blah, blah, okay? And what this should be is blog/index.html without the slash in front of it, but when we run the program, it's /blog/index.html. So essentially, again, we have an off-by-one error here.
 
 [00:06:46]
 So how do we fix this? Well, basically what we wanna do is, we have our sort of start and end here. So the end is where we end up with, I'm sorry, start and end are basically both slashes. So the start is the slash at the beginning here, and then the end is the slash at the end of this thing.
@@ -78,14 +78,14 @@ Now, because all we're doing here is we're just looping until we see a space, th
 But since it's not either of those, this isn't a problem. So the other thing that we could do here is we could combine these two consecutive ++ into a += 2. That would also work exactly the same way. And voila, the bug is now fixed. Cool, so fix that off-by-one error, introduce some others, fix them, great.
 
 [00:08:17]
-So now, before fixing this now one, we're gonna try moving it up to the beginning of main and see what happens.
+So now, before fixing this next one, we're gonna try moving it up to the beginning of main and see what happens.
 >> Richard Feldman: Okay, so all I did was move it up there. Boom, abort, this is one of our new fun no stack trace errors. We've seen segfault and bus error, and now we're seeing abort.
 
 [00:08:36]
 So what's going on there? And why is it that if I put this code at the end of the file, or sorry, at the end of the function, it works fine. And by the way, if you look at this, this looks like it should be pretty self-contained, right?
 
 [00:08:46]
-I'm seeing rec4, I've got rec1, rec2, rec3 for the different requests up here, rec4[]=, and then I just call to_path on rec4. This doesn't reference any of the rec1, rec2, or rec3s. All it references is, we're calling this function, we're parsing in this local thing, and we're not using any globals.
+I'm seeing req4, I've got req1, req2, req3 for the different requests up here, req4[]=, and then I just call to_path on req4. This doesn't reference any of the req1, req2, or req3s. All it references is, we're calling this function, we're passing in this local thing, and we're not using any globals.
 
 [00:09:05]
 I mean, we're using some string constants, those aren't a problem. So what could possibly be happening [LAUGH] That this thing works? Well, it gets the wrong answer, granted, we wanted to see null here. But it works fine, it runs fine. But then as soon as I move it up to the top of the function, it pulls up the entire program.
@@ -108,7 +108,7 @@ I omitted those on purpose in order to cause this error. And so basically, what'
 So whatever happens to be in memory there, that's what's gonna get stomped on and overwritten. And the reason it behaves differently, if I put it at the end of the function versus earlier, is that whatever happens to be there after those bytes changes depending on whether I'm doing this at the beginning of the function or the end.
 
 [00:11:04]
-And the reason the program's blowing up is that, up here, when we get to those bytes, the processor or the operating system, it tries to do something when those bytes are overridden that results in some sort of operating system error. So I don't actually know specifically what those bites are doing or what the exact thing is.
+And the reason the program's blowing up is that, up here, when we get to those bytes, the processor or the operating system, it tries to do something when those bytes are overridden that results in some sort of operating system error. So I don't actually know specifically what those bytes are doing or what the exact thing is.
 
 [00:11:26]
 You'd have to look at the actual assembly to try to figure that out. But it's probably something along the lines of, remember I mentioned at the very beginning that there was some assembly that we were omitting for the boilerplate of beginning of functions. And the boilerplate is basically stuff like, looking at what the arguments are, getting those out of the global variables into the registers, or storing them, storing where the function's gonna return to and things like that.
@@ -129,7 +129,7 @@ When you run this program, okay, I mean, we know that there's a bug here, in tha
 And this is one of the things that makes memory safety bugs so pernicious, is that in a lot of cases, there's a lot of different factors that go into reproducing it. Another thing I haven't tried, but if you played around with using different compiler optimization settings to build this, compiler optimizations will often rearrange things inside the function in ways that it assumes are harmless, assuming your code is actually doing the right thing.
 
 [00:13:23]
-Another possibility is that these things could end up with the memory being in such a place that this code works fine, that as soon as you run the optimizer, it blows up. And you might blame the optimizer and say the optimizer must have a bug in it, but it might not.
+Another possibility is that these things could end up with the memory being in such a place that this code works fine, then as soon as you run the optimizer, it blows up. And you might blame the optimizer and say the optimizer must have a bug in it, but it might not.
 
 [00:13:34]
 The reason that it might be blowing up is just that the bug was always there. You just weren't happening to see any symptom because the memory it was stomping over happened to be harmless until you kicked in the optimizations, and then it happened to be overriding memory that was not harmless.
@@ -155,7 +155,7 @@ And so then if you do that, that can give you more of a clue. Well, first of all
 Yeah, there's this thing called a stack-smashing attack, which is a whole [LAUGH] Thing that we're not going to get into. But yeah, that is one example of a thing you can do to not prevent the bug, but at least give you a clue of what's actually happening there.
 
 [00:15:33]
-Okay, yeah, and then the last thing we're gonna do is we're gonna fix this by handling the case where rec is too short to have "index.html" memcop'd into it. Hint, strlen returns an integer whose type is not 'int', but rather 'size_t'. This is a hint, because as you're fixing this, we do actually need to do this, we're going to encounter this compiler error.
+Okay, yeah, and then the last thing we're gonna do is we're gonna fix this by handling the case where req is too short to have "index.html" memcop'd into it. Hint, strlen returns an integer whose type is not 'int', but rather 'size_t'. This is a hint, because as you're fixing this, we do actually need to do this, we're going to encounter this compiler error.
 
 [00:15:49]
 So basically, what's happening here is we are saying, okay, I want to detect whether or not we are going to write over this, and if we are going to write over this, then let's blow up instead. So basically we've got our length of the thing that we're copying in and we've got our starting point.

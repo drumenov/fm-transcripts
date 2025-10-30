@@ -134,7 +134,7 @@ you can do stuff like,
 28
 00:01:17.187 --> 00:01:20.039
 I can iterate over all the fields and
-they'll give them the strings.
+they'll give them as strings.
 
 29
 00:01:20.039 --> 00:01:21.005
@@ -157,7 +157,7 @@ this string means get the second one.
 
 33
 00:01:30.344 --> 00:01:36.066
-So if you say start.mode_t, it's,
+So if you say stat.mode_t, it's,
 that means get the memory at this offset.
 
 34
@@ -260,7 +260,7 @@ it's got all sorts of stuff like the inode
 
 54
 00:02:51.748 --> 00:02:55.149
-number, in case you hear that,
+number, in case you need that,
 the user ID of the owner, the group ID,
 
 55
@@ -336,7 +336,7 @@ I wanna make this buffer, and I said,
 
 70
 00:03:45.565 --> 00:03:51.115
-(100); which basically means I want you
+[100]; which basically means I want you
 to reserve, this is gonna be an address,
 
 71
@@ -419,7 +419,7 @@ now I can go look at my metadata thing and
 
 87
 00:04:46.121 --> 00:04:48.968
-say, .this.that, get the values off of it.
+say, .this, .that, get the values off of it.
 
 88
 00:04:48.968 --> 00:04:53.293
@@ -749,7 +749,7 @@ this is also quite efficient,
 
 156
 00:08:30.675 --> 00:08:34.771
-and when we get to the section on heat
+and when we get to the section on heap
 memory, we can see how the thing that's
 
 157

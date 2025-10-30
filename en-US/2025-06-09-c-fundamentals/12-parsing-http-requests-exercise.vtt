@@ -132,11 +132,11 @@ just start++ along the way.
 28
 00:01:24.396 --> 00:01:28.264
 If we encounter a null byte, which
-we're using the syntax for that, then
+we're using the bang syntax for that, then
 
 29
 00:01:28.264 --> 00:01:31.923
-really return null rather than continuing
+we early return null rather than continuing
 to read past the end of the string.
 
 30
@@ -170,7 +170,7 @@ If we didn't have a slash there,
 
 36
 00:01:58.295 --> 00:02:00.483
-then we're gonna write 1
+then we're gonna write one
 into the original string.
 
 37
@@ -558,7 +558,7 @@ trim off the leading slash.
 116
 00:06:27.191 --> 00:06:29.833
 So what we wanna do is
-modify to path to fix them.
+modify to_path to fix them.
 
 117
 00:06:29.833 --> 00:06:35.458
@@ -717,7 +717,7 @@ introduce some others, fix them, great.
 
 150
 00:08:17.824 --> 00:08:19.706
-So now, before fixing this now one,
+So now, before fixing this next one,
 
 151
 00:08:19.706 --> 00:08:23.550
@@ -763,18 +763,18 @@ pretty self-contained, right?
 
 160
 00:08:46.779 --> 00:08:49.975
-I'm seeing rec4,
-I've got rec1, rec2, rec3 for
+I'm seeing req4,
+I've got req1, req2, rej3 for
 
 161
 00:08:49.975 --> 00:08:55.017
-the different requests up here, rec4[]=,
-and then I just call to_path on rec4.
+the different requests up here, req4[]=,
+and then I just call to_path on req4.
 
 162
 00:08:55.017 --> 00:08:57.782
-This doesn't reference any of the rec1,
-rec2, or rec3s.
+This doesn't reference any of the req1,
+req2, or req3s.
 
 163
 00:08:57.782 --> 00:09:01.070
@@ -783,7 +783,7 @@ we're calling this function,
 
 164
 00:09:01.070 --> 00:09:05.364
-we're parsing in this local thing,
+we're passing in this local thing,
 and we're not using any globals.
 
 165
@@ -980,7 +980,7 @@ in some sort of operating system error.
 205
 00:11:21.663 --> 00:11:25.426
 So I don't actually know specifically
-what those bites are doing or
+what those bytes are doing or
 
 206
 00:11:25.426 --> 00:11:26.818
@@ -1173,7 +1173,7 @@ could end up with the memory being in such
 245
 00:13:27.286 --> 00:13:30.519
 a place that this code works fine,
-that as soon as you run the optimizer,
+then as soon as you run the optimizer,
 
 246
 00:13:30.519 --> 00:13:31.113
@@ -1380,7 +1380,7 @@ gonna do is we're gonna fix this by
 
 288
 00:15:36.463 --> 00:15:39.579
-handling the case where rec is too short
+handling the case where req is too short
 to have "index.html" memcop'd into it.
 
 289

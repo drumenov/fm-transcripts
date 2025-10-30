@@ -318,7 +318,7 @@ bytes, I want you to stomp all over them.
 
 67
 00:03:18.814 --> 00:03:21.985
-Or what we saw later on with fsat,
+Or what we saw later on with fstat,
 where we're like, hey, here's this struct.
 
 68
@@ -593,7 +593,7 @@ as just empty plain old bytes here.
 
 125
 00:06:19.581 --> 00:06:22.077
-So this is all initialized memory, and
+So this is all uninitialized memory, and
 then we're just gonna go through and
 
 126
@@ -878,11 +878,11 @@ rather than a sockaddr_in address.
 184
 00:09:31.588 --> 00:09:35.986
 As opposed to sockaddr, I think it's
-in6 is the IPv6 version of that, in6,
+in6 is the IPv6 version of that. In6,
 
 185
 00:09:35.986 --> 00:09:37.573
-that's what it is, right?
+that's what it is, right.
 
 186
 00:09:37.573 --> 00:09:42.704
@@ -921,7 +921,7 @@ either the sin6 family or
 
 193
 00:10:04.549 --> 00:10:08.598
-the sin family,
+the sa family,
 depending on it's IPv6 or IPv4.
 
 194

@@ -11,7 +11,7 @@ which is called index.html.
 
 3
 00:00:03.749 --> 00:00:07.169
-We've got our two path function,
+We've got our to_path function,
 which takes in the request and
 
 4
@@ -27,7 +27,7 @@ we have char *req = blah, blah, blah.
 6
 00:00:14.738 --> 00:00:18.077
 So then we're gonna call char
-*path = to path (req), and
+*path = to_path (req), and
 
 7
 00:00:18.077 --> 00:00:21.358
@@ -411,7 +411,7 @@ two different styles of iteration.
 
 87
 00:04:14.748 --> 00:04:19.188
-We saw the wild loop where we just sort
+We saw the while loop where we just sort
 of advancing the memory address of
 
 88
@@ -459,12 +459,12 @@ request and translate it from slash blog
 97
 00:04:43.193 --> 00:04:47.150
 in the middle of this like get
-an HTTP 1.1 all these headers, and
+and HTTP 1.1 all these headers, and
 
 98
 00:04:47.150 --> 00:04:51.765
 get back out the string that we want,
-which is blog, slash index, dot HTML.
+which is blog/index.html.
 
 99
 00:04:51.765 --> 00:04:56.717
@@ -583,7 +583,7 @@ So give me one byte and put it right here.
 
 123
 00:06:01.074 --> 00:06:03.909
-If I change this to instar and change
+If I change this to int star and change
 nothing else about the program, well,
 
 124
@@ -593,9 +593,8 @@ because it would say type mismatch here.
 
 125
 00:06:06.943 --> 00:06:11.046
-I'd have to cast it to instar, but
-if I cast it to instar, it would still be
-
+I'd have to cast it to int star, but
+if I cast it to int star, it would still be
 126
 00:06:11.046 --> 00:06:15.707
 the same exact integer in memory, this is

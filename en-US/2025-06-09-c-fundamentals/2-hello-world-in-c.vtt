@@ -126,7 +126,7 @@ the different parts of what we got here.
 
 27
 00:01:14.845 --> 00:01:19.338
-So essentially, this pound include here,
+So essentially, this "#include" here,
 we're gonna talk about what the pound sign
 
 28
@@ -150,7 +150,7 @@ something like that.
 
 32
 00:01:31.114 --> 00:01:34.647
-And this is what gives us this right
+And this is what gives us this "write"
 function that we're using right there.
 
 33
@@ -193,7 +193,7 @@ something, then instead of void,
 
 41
 00:02:00.722 --> 00:02:02.127
-we would say [INAUDIBLE] here.
+we would say "int" here.
 
 42
 00:02:02.127 --> 00:02:05.385
@@ -270,7 +270,7 @@ embraces truthiness, among other things.
 57
 00:02:50.623 --> 00:02:54.638
 And they actually do not have, or
-at least the original versions of CF.
+at least the original versions of C.
 
 58
 00:02:54.638 --> 00:02:58.543
@@ -303,7 +303,7 @@ the length of the string.
 
 64
 00:03:13.166 --> 00:03:16.468
-So when you're calling the right function,
+So when you're calling the "write" function,
 you need to not only give it the string,
 
 65
@@ -511,7 +511,7 @@ The compiler is gonna say, nah,
 107
 00:05:18.611 --> 00:05:21.609
 I know that that goes in a separate
-sort of constant section.
+sort of constants section.
 
 108
 00:05:21.609 --> 00:05:24.877
@@ -577,7 +577,7 @@ for main, there's some other boilerplate
 121
 00:06:08.347 --> 00:06:10.994
 on either side of this for
-setting up meeting itself.
+setting up main itself.
 
 122
 00:06:10.994 --> 00:06:15.328
@@ -635,7 +635,7 @@ preparing the state of the processor for
 
 133
 00:06:51.578 --> 00:06:53.170
-executing the right function.
+executing the "write" function.
 
 134
 00:06:53.170 --> 00:06:55.894
@@ -683,7 +683,7 @@ have your functions talk to each other.
 
 143
 00:07:23.500 --> 00:07:26.603
-I know, assembly language is read,
+I know, assembly language is rad,
 they're almost great,
 
 144
@@ -692,7 +692,7 @@ that's kind of what registers are.
 
 145
 00:07:28.462 --> 00:07:32.075
-So basically, this right function which
+So basically, this "write" function which
 comes from that unit STD library,
 
 146
@@ -702,7 +702,7 @@ by the operating system.
 
 147
 00:07:34.626 --> 00:07:37.986
-So I don't need to mpm install anything or
+So I don't need to npm install anything or
 an equivalent to that.
 
 148
@@ -713,11 +713,11 @@ built into the OS in the same way that,
 149
 00:07:43.632 --> 00:07:46.885
 in JavaScript you have
-the math is built-in.
+the Math is built-in.
 
 150
 00:07:46.885 --> 00:07:50.197
-You can say math.random, you don't need
+You can say Math.random, you don't need
 to go install a library to get that.
 
 151
@@ -918,7 +918,7 @@ everything's a global, [LAUGH] yeah.
 192
 00:10:01.402 --> 00:10:05.606
 &gt;&gt; Speaker 4: So
-the right function that we're importing,
+the write function that we're importing,
 
 193
 00:10:05.606 --> 00:10:11.013
@@ -1003,12 +1003,12 @@ you want go in the binary.
 
 210
 00:10:59.222 --> 00:11:02.479
-You can be like, macOS uses 17 to mean,
-right, to stand it out.
+You can be like, macOS uses 17 to mean
+"Write to stand it out."
 
 211
 00:11:02.479 --> 00:11:05.454
-But macOs actually officially says,
+But macOS actually officially says,
 do not do that.
 
 212
@@ -1053,7 +1053,7 @@ they can say, okay, if you are calling,
 220
 00:11:31.546 --> 00:11:35.431
 if you're using this as the lowest level
-primitive where you call right, and
+primitive where you call write, and
 
 221
 00:11:35.431 --> 00:11:36.838
@@ -1280,7 +1280,7 @@ it's literally not possible.
 
 268
 00:14:01.010 --> 00:14:05.110
-So now we are as close to the middle
+So now we are as close to the metal
 as you can get, congratulations.
 
 269
@@ -1289,7 +1289,7 @@ All right, yeah, and also,
 
 270
 00:14:07.341 --> 00:14:11.732
-the right function could be doing
+the write function could be doing
 stuff that could get faster.
 
 271

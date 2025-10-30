@@ -17,11 +17,11 @@ will not let you use these in a switch.
 4
 00:00:12.585 --> 00:00:15.886
 But even assuming that you're
-using one of the C compilers,
+using one of the C compilers
 
 5
 00:00:15.886 --> 00:00:18.423
-it does allow you to use
+that does allow you to use
 a constant in a switch.
 
 6
@@ -37,7 +37,7 @@ level of the program, you're actually
 8
 00:00:26.153 --> 00:00:29.636
 just not allowed to call arbitrary
-functions like toint at that time,
+functions like to_int at that time,
 
 9
 00:00:29.636 --> 00:00:30.778
@@ -60,11 +60,11 @@ that it allows you to basically just run
 
 13
 00:00:40.474 --> 00:00:42.609
-zig functions at compile time like this.
+Zig functions at compile time like this.
 
 14
 00:00:42.609 --> 00:00:47.082
-So in zig, this would actually just
+So in Zig, this would actually just
 work fine, but in C, unfortunately,
 
 15
@@ -83,7 +83,7 @@ around this is by converting it from
 
 18
 00:00:56.403 --> 00:00:58.127
-a constant to something else.
+a const int to something else.
 
 19
 00:00:58.127 --> 00:01:01.746
@@ -92,7 +92,7 @@ code from the previous section.
 
 20
 00:01:01.746 --> 00:01:04.935
-We said like listening on local host port,
+We said like listening on localhost port,
 whatever.
 
 21
@@ -103,7 +103,7 @@ but a really obvious thing that
 22
 00:01:08.085 --> 00:01:10.235
 you might wanna do is to make
-a concept for the port so
+a constant for the port so
 
 23
 00:01:10.235 --> 00:01:13.535
@@ -188,8 +188,8 @@ it's not like a full programming language.
 
 40
 00:01:58.580 --> 00:02:02.266
-Whereas zig, one of the design things
-of zig was to get rid of the concept of
+Whereas Zig, one of the design things
+of Zig was to get rid of the concept of
 
 41
 00:02:02.266 --> 00:02:05.243
@@ -284,7 +284,7 @@ that is what pound defined does.
 60
 00:02:58.142 --> 00:03:02.270
 Now you can also take this a step further
-and write functions with Conde fine.
+and write functions with pound define.
 
 61
 00:03:02.270 --> 00:03:05.200
@@ -297,8 +297,8 @@ here's the name of the function.
 
 63
 00:03:07.018 --> 00:03:10.928
-In this case, I've called it four
-char because it takes four chars and
+In this case, I've called it
+FOURCHAR because it takes four chars and
 
 64
 00:03:10.928 --> 00:03:14.242
@@ -328,7 +328,7 @@ new lines and stuff in these pound
 69
 00:03:26.128 --> 00:03:30.088
 defines because they don't have curly
-braces delivering them functions do.
+braces delimiting them like functions do.
 
 70
 00:03:30.088 --> 00:03:33.381
@@ -343,7 +343,7 @@ the previous line [COUGH] and
 72
 00:03:36.459 --> 00:03:41.128
 essentially what this will do is,
-much how P-O-R-T gets substituted in.
+much how P-O-R-T gets substituted in here.
 
 73
 00:03:41.128 --> 00:03:45.393
@@ -406,8 +406,8 @@ okay, cool.
 
 85
 00:04:19.607 --> 00:04:23.969
-Constant HTML equals a four char,
-and now we actually are working
+Const int HTML equals a FOURCHAR of this, this,
+this and this, and now we actually are working
 
 86
 00:04:23.969 --> 00:04:28.503
@@ -422,7 +422,7 @@ of those situations where you're
 88
 00:04:33.343 --> 00:04:37.655
 using a compiler that does not
-support constant for this,
+support const int for this,
 
 89
 00:04:37.655 --> 00:04:43.382
@@ -437,7 +437,7 @@ you're using one of the ones that doesn't,
 91
 00:04:46.335 --> 00:04:49.099
 then instead of this constant, you can
-just do another pound to find right here.
+just do another pound define right here.
 
 92
 00:04:49.099 --> 00:04:53.451
@@ -535,13 +535,13 @@ read, but also quite fast, because, again,
 
 111
 00:05:52.064 --> 00:05:55.565
-compared to the stir comp way, which,
+compared to the strcmp way, which,
 honestly, if I were just writing this for
 
 112
 00:05:55.565 --> 00:05:58.107
 personal use, I would probably
-go with the stir comp way.
+go with the strcmp way.
 
 113
 00:05:58.107 --> 00:06:03.257
@@ -555,13 +555,13 @@ run very fast because we aren't having
 
 115
 00:06:08.487 --> 00:06:13.330
-to go through in March one, bite at
+to go through in and march one byte at
 a time through each of these, okay?
 
 116
 00:06:13.330 --> 00:06:17.502
-Worst noting though that if you are using
-a programming language that's not c,
+Worth noting though that if you are using
+a programming language that's not C,
 
 117
 00:06:17.502 --> 00:06:21.611
@@ -570,7 +570,7 @@ the equivalent of what your language
 
 118
 00:06:21.611 --> 00:06:22.311
-Just doing.
+is doing.
 
 119
 00:06:22.311 --> 00:06:27.444
@@ -599,7 +599,7 @@ reason that we're able to get better
 
 124
 00:06:46.012 --> 00:06:50.209
-performance in sea here is that we are
+performance in C here is that we are
 doing some pretty heinous memory tricks.
 
 125
@@ -634,7 +634,7 @@ we need happens to be under four bytes.
 
 131
 00:07:12.766 --> 00:07:15.503
-And thankfully.woff happens to
+And thankfully .woff happens to
 be application octet stream,
 
 132
@@ -650,7 +650,7 @@ this is a giant pile of hacks.
 134
 00:07:20.892 --> 00:07:24.061
 This is all very brittle, why don't you
-just use stir, comp, a normal programmer,
+just use strcmp like a normal programmer,
 
 135
 00:07:24.061 --> 00:07:24.951
@@ -722,7 +722,7 @@ think back to some of these original games
 
 149
 00:08:09.124 --> 00:08:13.417
-that ran on PCs and the 90s that were
+that ran on PCs in like the 90s that were
 doing things with graphics that people
 
 150

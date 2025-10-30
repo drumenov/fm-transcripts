@@ -78,7 +78,7 @@ blah, blah, blah,
 17
 00:00:44.513 --> 00:00:47.443
 basically the entire context
-of the index side html there.
+of the index.html there.
 
 18
 00:00:47.443 --> 00:00:49.191
@@ -576,7 +576,7 @@ something like C?
 122
 00:06:15.051 --> 00:06:18.165
 Well, yes, so
-why don't you destroy the length up front?
+why don't you store the length up front?
 
 123
 00:06:18.165 --> 00:06:21.699
@@ -630,7 +630,7 @@ maybe we wanna just store one byte.
 133
 00:06:50.463 --> 00:06:53.558
 And yeah, it's gonna take longer to
-traverse the string to ask about its
+traverse the string to ask about what its
 
 134
 00:06:53.558 --> 00:06:54.073
@@ -668,7 +668,7 @@ But that's kind of the reasoning for this.
 141
 00:07:16.062 --> 00:07:19.613
 When you encounter C APIs in the wild,
-even the node, JSC API,
+even the Node.js C API,
 
 142
 00:07:19.613 --> 00:07:24.043
@@ -982,7 +982,7 @@ address to something and
 206
 00:11:04.836 --> 00:11:09.057
 have it actually without any other
-information, nowhere the string ends.
+information, know where the string ends.
 
 207
 00:11:09.057 --> 00:11:12.279

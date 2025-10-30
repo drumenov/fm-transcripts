@@ -1,5 +1,5 @@
 [00:00:00]
->> Richard Feldman: Now we're going to get into some actual file IO. So up to this point, we've only been working with strings, but of course, in order for our static web server to actually work, we need to be reading these index dot HTML files off of the disk in order to send them back to the browser.
+>> Richard Feldman: Now we're going to get into some actual file IO. So up to this point, we've only been working with strings, but of course, in order for our static web server to actually work, we need to be reading these index.html files off of the disk in order to send them back to the browser.
 
 [00:00:11]
 So the browser can do all of its work rendering them and making them look nice. So we're gonna start by looking at how to open a file, and then how to get the size of the file, which is going to be important later. And also reading the contents of the file, of course, something we want to do.
@@ -14,13 +14,13 @@ We wanna translate that into the file path of a blog / index.html with or withou
 If we wanna open that file for reading, which is what we're gonna do in our static web server. We don't care about writing files at all. This is how we would do that. So there's two pieces to note here. So first we're saying we're calling this function named open.
 
 [00:01:09]
-We're passing in the path and we're giving it this flag that says Read only. This is just a constant that's available for the standard library that basically says, I want to open this file in read-only mode. Other options include, I can say, like, I want to allow writes but not reads.
+We're passing in the path and we're giving it this flag that says Read only. This is just a constant that's available from the standard library that basically says, I want to open this file in read-only mode. Other options include, I can say, like, I want to allow writes but not reads.
 
 [00:01:24]
 Or you can say, I want to allow both for our purposes. This is just like a little, nice, little safety measure that we make sure we don't accidentally write to this file, because we really only want to be reading from these. The path again, this is a memory address.
 
 [00:01:36]
-So as we know, this is an integer that's being passed open, and this also is another integer [LAUGH]. So this flag of whether it's read only or rewrite, etc, is just a constant that's an integer. Now open returns an int, which is known as a file descriptor. Now as we're gonna see in a moment, the file descriptor can also be used to do things like reading things from the file or getting the size of the file.
+So as we know, this is an integer that's being passed open, and this also is another integer [LAUGH]. So this flag of whether it's read only or read/write, etc, is just a constant that's an integer. Now open returns an int, which is known as a file descriptor. Now as we're gonna see in a moment, the file descriptor can also be used to do things like reading things from the file or getting the size of the file.
 
 [00:02:00]
 It's basically, a way to avoid having to pass in this path every single time. The operating system has this concept of like, okay, I've opened this file. I've sort of made a little in-memory database of like, yes, this file, this ID, this integer ID, which we call file descriptor or FD for short.
@@ -71,7 +71,7 @@ Don't put any other variables in there. Those are all reserved for me, and give 
 It's gonna be just like that first exercise. And we read off the end of Hello World. That's what's gonna happen, if you [LAUGH] printf this thing. It's just whatever ones and zeros happen to be at that address. And what the read function does. It says, okay, give me the file descriptor that you already opened.
 
 [00:06:17]
-So this is gonna be our example dot txt. And then it says, give me the memory address that you want to read into. So you may recall in our previous session, we did this thing that seemed like a very strange thing to do in most programming languages where we took this request string.
+So this is gonna be our example.txt. And then it says, give me the memory address that you want to read into. So you may recall in our previous session, we did this thing that seemed like a very strange thing to do in most programming languages where we took this request string.
 
 [00:06:29]
 There was already some data there, and then we just stomped all over it. It's totally normal thing to do in C. It is such a normal thing to do in C that literally the way that you read files in C is to do exactly that. This is the official C standard library approved way to read files is you literally say, give me a memory address.

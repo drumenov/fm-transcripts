@@ -75,7 +75,7 @@ and reading into garbage memory and
 
 16
 00:00:46.478 --> 00:00:47.877
-all this initialized stuff.
+all this uninitialized stuff.
 
 17
 00:00:47.877 --> 00:00:52.759
@@ -431,7 +431,7 @@ some really high performance section here.
 90
 00:04:35.112 --> 00:04:38.141
 If I could make this one part of my
-NodeJs server a little bit faster,
+Node.js server a little bit faster,
 
 91
 00:04:38.141 --> 00:04:39.431
@@ -468,7 +468,7 @@ you can also do in C.
 98
 00:04:56.844 --> 00:05:01.134
 I've actually gotten paid at work to
-write a Node.js add-on [LAUGH] before.
+write a Node.js C add-on [LAUGH] before.
 
 99
 00:05:01.134 --> 00:05:04.164
@@ -477,7 +477,7 @@ definitely works with just C,
 
 100
 00:05:04.164 --> 00:05:06.171
-you don't need to know C to use this.
+you don't need to know C++ to use this.
 
 101
 00:05:06.171 --> 00:05:09.583
@@ -543,8 +543,8 @@ Andrew Kelley, who created Zig,
 
 114
 00:05:46.453 --> 00:05:49.701
-gave this awesome talk called how
-to build software from source.
+gave this awesome talk called "How
+to build software from source".
 
 115
 00:05:49.701 --> 00:05:52.349
@@ -608,7 +608,7 @@ this is the book they're talking about.
 
 128
 00:06:25.033 --> 00:06:27.418
-So this is Brian Curnahan and
+So this is Brian Kernighan and
 Dennis Ritchie.
 
 129
@@ -753,12 +753,12 @@ find more stuff like that at this website.
 158
 00:08:00.231 --> 00:08:04.082
 If you really wanna go all the way
-down the rabbit hole, Casey Muratore,
+down the rabbit hole, Casey Muratori,
 
 159
 00:08:04.082 --> 00:08:06.873
 who you might have seen on
-like the primogen stream.
+like Theprimeagen stream.
 
 160
 00:08:06.873 --> 00:08:08.583
@@ -889,7 +889,7 @@ yeah, there was a question?
 186
 00:09:26.559 --> 00:09:31.609
 &gt;&gt; Speaker 2: Just on a similar vein,
-Mishko Avery, the creator of Angular,
+Mishko Hevery, the creator of Angular,
 
 187
 00:09:31.609 --> 00:09:36.672
@@ -990,7 +990,7 @@ language on the planet right now.
 
 208
 00:10:29.654 --> 00:10:33.402
-Russ, strong contender,
+Rust, strong contender,
 also extremely complicated language, but
 
 209
@@ -1016,7 +1016,7 @@ is also pretty old.
 213
 00:10:47.329 --> 00:10:51.272
 D is notable for like anytime you mention
-C++ or Russ or Zig on Hacker News,
+C++ or Rust or Zig on Hacker News,
 
 214
 00:10:51.272 --> 00:10:53.563
@@ -1120,21 +1120,21 @@ by far the most popular right now.
 235
 00:11:58.385 --> 00:12:03.048
 And time will tell how
-those things shaken.
+those things shakeout.
 
 236
 00:12:03.048 --> 00:12:06.339
 Also all of these low overhead
-C Alternatives they all support C and
+C Alternatives they all support C
 
 237
 00:12:06.339 --> 00:12:10.219
-Rob just like most mainstream languages
+interop just like most mainstream languages
 do because C is the language that other
 
 238
 00:12:10.219 --> 00:12:13.190
-languages use talk to each
+languages use to talk to each
 other as previously discussed.
 
 239

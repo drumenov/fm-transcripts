@@ -50,13 +50,13 @@ I mentioned this because this context is relevant for a lot of the design decisi
 It's not you have somebody who's really dogmatic about their formatting and saying, you must stick to 80 character width as a matter of our formatting configuration. It's no, no, no, 80 characters is literally all you get, and that's it. The physical printer does not go past 80 characters [LAUGH] so that's all you got to work with.
 
 [00:04:43]
-That type of thing. Also, they had a lot of performance constraints. So the PDP-11 had a whopping 256 kilobytes of memory. It had 1-core single CPU. So no multi-core anything, no parallel processing of any kind. It ran at a blistering 125 kilohertz on that 1-core. So not only was it 110 of a megahertz, not even close to a gigahertz.
+That type of thing. Also, they had a lot of performance constraints. So the PDP-11 had a whopping 256 kilobytes of memory. It had 1-core single CPU. So no multi-core anything, no parallel processing of any kind. It ran at a blistering 125 kilohertz on that 1-core. So not only was it 1/10 of a megahertz, not even close to a gigahertz.
 
 [00:05:04]
 So this is essentially the world that they were living in when they designed and developed C. Despite that they were able to build a language that supported building all of these tools that we still use today. Which then leads to the question, if this was the language that they were building for this kind of hardware, why would people still use it on modern hardware when modern hardware runs so much faster?
 
 [00:05:26]
-Well, one of the things you might notice about all of these pieces of software on the screen here is that they're all things that really, really care about performance. They're things where if you can get something to run acceptably fast on this kind of hardware, imagine what you can do with something that has 3264, gigabytes of memory and 16-core CPU and multiple gigahertz.
+Well, one of the things you might notice about all of these pieces of software on the screen here is that they're all things that really, really care about performance. They're things where if you can get something to run acceptably fast on this kind of hardware, imagine what you can do with something that has 32, 64 gigabytes of memory and 16-core CPU and multiple gigahertz.
 
 [00:05:47]
 Yeah, you can get something that runs very, very fast on modern hardware. So fundamentally, what people sort of jokingly, kind of half seriously refer to C as is portable assembly. And assembly language is essentially one very thin layer of abstraction on top of hardware machine instructions that the CPU understands.
@@ -100,7 +100,7 @@ And also, finally, C is the language that other languages use to talk to each ot
 So if you want to do, for example, interop between Node.js and other language, Node.js supports C interop. Haskell, which we talked about earlier, has C interop. Rust has C interop. Pretty much every language has some sort of C interop. Really, one of the only exceptions to this, technically, would have been JavaScript in the browser, which, for a long time, had absolutely no way to talk to C, although now through WebAssembly, that is kind of possible.
 
 [00:09:29]
-But it's really taken off as this way to have one language talk to another one. If you've got Python embedded in Rust, or something like that. The way that Python and Rust are interacting and talking to each other is using C as an intermediary or at least the C ABI, which is essentially the way that C represents things in memory even if it's not literal.c files.
+But it's really taken off as this way to have one language talk to another one. If you've got Python embedded in Rust, or something like that. The way that Python and Rust are interacting and talking to each other is using C as an intermediary or at least the C ABI, which is essentially the way that C represents things in memory even if it's not literal .c files.
 
 [00:09:50]
 

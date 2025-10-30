@@ -3,7 +3,7 @@ WEBVTT
 1
 00:00:00.031 --> 00:00:03.188
 &gt;&gt; Richard Feldman: So if we go back and
-apply this concept to Hello, World,
+apply this concept to Hello World,
 
 2
 00:00:03.188 --> 00:00:07.896
@@ -269,7 +269,7 @@ you have to explain how clever this is.
 56
 00:03:05.601 --> 00:03:10.542
 But they managed to mix an encoding that
-was backwards and compatible with ASCII,
+was backwards compatible with ASCII,
 
 57
 00:03:10.542 --> 00:03:14.479

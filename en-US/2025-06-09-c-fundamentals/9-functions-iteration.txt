@@ -8,7 +8,7 @@ So we talked previously about how we're gonna send a response back from our serv
 If it's a request to the /blog URL, HTTP/1.1 is just the protocol, and that's gonna have a whole bunch of headers like host and user agent and stuff like that. Basically what we're gonna do is, when we get slash blog, we're just gonna translate that into a path of a file to open.
 
 [00:00:44]
-So in this case, because this one didn't end in like a file extension, it doesn't have like A in it, we're gonna assume, yeah, that's basically means they want blog slash index, dot, HTML. That's the file we're gonna look for on the file system. So also, if it ends in a slash, same thing.
+So in this case, because this one didn't end in like a file extension, it doesn't have like "." in it, we're gonna assume, yeah, that's basically means they want blog/index.html. That's the file we're gonna look for on the file system. So also, if it ends in a slash, same thing.
 
 [00:00:58]
 We're just gonna be like, okay, that's exactly the same thing. Look for inside the blog directory index.html. So to do this, we're gonna start by just basically defining the same basic setup that we had at the end of the previous section. Except this time, instead of a response, we're gonna make a request here.
@@ -20,19 +20,19 @@ And then we're gonna do some processing on it to try to extract the relevant par
 So we're gonna get the memory address of this beginning of the string right here, and I'm gonna use that to sort of go find the part of it that is this actual, blog. That's gona be the path Path to the thing that we want to return. And then finally, we're going to print out the path.
 
 [00:01:44]
-Now, as we're going to see, this is a little bit more complicated in C than it would be in certain other languages where writing a function like two path very straightforward. Gonna be a little bit less straightforward the way we're going to do it. Okay, so the first thing is, like, in order to make a new function in C, basically, instead of returning an int, this.
+Now, as we're going to see, this is a little bit more complicated in C than it would be in certain other languages where writing a function like to_path very straightforward. Gonna be a little bit less straightforward the way we're going to do it. Okay, so the first thing is, like, in order to make a new function in C, basically, instead of returning an int, this.
 
 [00:01:59]
-This char star is going to sorry to path is going to return a char star. In other words, this is going to return not the exit code of the program, but rather the memory address of the actual path, once we've finished extracting the path from the request and adding the index dot HTML to the end of it.
+This char star is going to sorry, this to_path is going to return a char star. In other words, this is going to return not the exit code of the program, but rather the memory address of the actual path, once we've finished extracting the path from the request and adding the index.html to the end of it.
 
 [00:02:17]
-Now, in normalcy, if you do this, like if you You just write this code exactly as is, you're giving it an error that says, hey, you're trying to call this function called to path before it was defined. What's up with that? So C basically has two ways you can address this.
+Now, in normal C, if you do this, like if you You just write this code exactly as is, you're gonna get an error that says, hey, you're trying to call this function called to_path before it was defined. What's up with that? So C basically has two ways you can address this.
 
 [00:02:31]
-One is you can say, I want to forward declare it, which is basically where you write out just the type of the function with a semicolon at the end, above where you're actually going to call it. And this sort of lets see, know, as it's like coming through and processing everything.
+One is you can say, I want to forward declare it, which is basically where you write out just the type of the function with a semicolon at the end, above where you're actually going to call it. And this sort of lets C know, as it's like coming through and processing everything.
 
 [00:02:43]
-It says, okay, there is a function by this name. Here's the type. I see what it is. Great. When I'm calling it, I know what its type is, even though it hasn't been defined in terms of its implementation yet. And then later on, you can do it like that, or you can just simplify things and just move the function up and define it before me and.
+It says, okay, there is a function by this name. Here's the type. I see what it is. Great. When I'm calling it, I know what its type is, even though it hasn't been defined in terms of its implementation yet. And then later on, you can do it like that, or you can just simplify things and just move the function up and define it before main.
 
 [00:03:00]
 Again, this is one of those 1972 ergonomics kind of things. So as an example of the type of string we might pass in here, we might say input is, do a string, get slash, blog, HTTP, 1.1 and what we want to end up with is get rid of this initial thing, which is the method, which will be like your get, put post, delete one of those.
@@ -44,7 +44,7 @@ Get rid of that thing. Also get rid of the leading slash here. And then add slas
 In other words, this address is going to be the same as this address. And what we want to do is we want to move from that start address, which is the very beginning of the string, and we want to just advance it until we get to right here.
 
 [00:03:50]
-Because this is the point where we're at the end of this, like, G, E, T, and we're like, yeah, we're done parsing that. So this thing could be a get, it could be a post. It could be a put. We want to find this space. Phase because that let us know that we've moved past http verb and we can now actually get to the thing we care about which is the path.
+Because this is the point where we're at the end of this, like, G, E, T, and we're like, yeah, we're done parsing that. So this thing could be a get, it could be a post. It could be a put. We want to find this space because that lets us know that we've moved past the http verb and we can now actually get to the thing we care about which is the path.
 
 [00:04:07]
 So let's just write the logic to sort of advance this start thing over from this initial address to there. Well, to do this, basically, we can just write a while loop. So we say, while (start[0] and start back at 0 essentially means We're treating this memory address as essentially an array.
@@ -53,7 +53,7 @@ So let's just write the logic to sort of advance this start thing over from this
 Bracket zero means, you know, get me the first element of that array. So essentially what this is saying is take what's at this memory address, give me the byte that's right at this exact memory address, and keep looping until we hit a space at which point the loop will end.
 
 [00:04:37]
-And then at the end of the loop, we're gonna do start equals start plus one. Don't worry, we will change this to a for loop later, [LAUGH] But for now we're just gonna do it wild style. And basically this is a way of saying, okay, I want to just move this address up one.
+And then at the end of the loop, we're gonna do start equals start plus one. Don't worry, we will change this to a for loop later, [LAUGH] But for now we're just gonna do it while style. And basically this is a way of saying, okay, I want to just move this address up one.
 
 [00:04:50]
 I'm just gonna take this actual integer, because again, this is a memory address, and just increment it. Just move one slot at a time. And as we're doing this, we're going to effectively be going one character at a time Until eventually we end up with the character being space.
@@ -95,19 +95,19 @@ So null address basically just means. Memory addresses are integers and memory. 
 By the way, C does allow you to write it exactly like this, so you might notice I did not put curly braces here. Those curly braces are optional in c If you want, you can write an if and then no curly braces right after it. And it will just take the next statement that you have and say, that only applies to this conditional.
 
 [00:08:10]
-And then the thing after it applies to something else. Now, a problem with this is that it's very easy to make the mistake especi. Especially because code formatters like prettier and stuff, are not actually that common in the c world. What if you indent like this and you look at this code and you're like, yeah, that's all part of the conditional, but it's not because there's no curly braces there.
+And then the thing after it applies to something else. Now, a problem with this is that it's very easy to make the mistake especi. Especially because code formatters like prettier and stuff, are not actually that common in the C world. What if you indent like this and you look at this code and you're like, yeah, that's all part of the conditional, but it's not because there's no curly braces there.
 
 [00:08:30]
 So, this actually was the cause of a pretty famous bug called Hardbleed, basically what happened was, they traced it back and tried to figure out how this, Bug, which turned out to be a very serious exploit happened, and it actually came down to this, where someone had written an if without curly braces, but indented like this.
 
 [00:08:47]
-And it looked like these were both part of the conditional, but actually only the first one was part of the conditional. And that was the source of the book. So the moral of the story is always put curly braces around your conditional. This is not worth saving the extra characters.
+And it looked like these were both part of the conditional, but actually only the first one was part of the conditional. And that was the source of the bug. So the moral of the story is always put curly braces around your conditional. This is not worth saving the extra characters.
 
 [00:08:59]
 So we're going to put those in there, even though C doesn't require you to. I mentioned this mainly so that if you see in the while the C code that's doesn't have the curly braces there, you understand that like they're not required. But as a matter of good practice, I would always recommend putting them in.
 
 [00:09:12]
-Okay, now I mentioned earlier that we can convert this while loop to a for loop, and that's, this is what that looks like. So for loops essentially have three in green. So the first one is basically the initialization condition. So this is what's gonna run at the very beginning of the for loop.
+Okay, now I mentioned earlier that we can convert this while loop to a for loop, and that's, this is what that looks like. So for loops essentially have three ingredients. So the first one is basically the initialization condition. So this is what's gonna run at the very beginning of the for loop.
 
 [00:09:26]
 So we're basically saying, okay, I'm to take a start and initialize it to be equal to rec. So this is the same exact thing that we were doing here in the while loop outside the loop. You can just do that as part of the for loop. And you can also, if you want, move the char star.
@@ -116,34 +116,34 @@ So we're basically saying, okay, I'm to take a start and initialize it to be equ
 Inside of there. And then basically what this will do is this will say that if I put it in here as opposed to out here, it's basically saying that start is only going to be in scope inside this loop. And if anybody outside the loop tries to reference it, that it's gonna give a compiler.
 
 [00:09:54]
-And then basically we have the same condition in here, like keep going until it. It hits the space. And then this is what we do on each iteration of the loop once we get to the end. So this thing right here, just des sugars to exactly the same thing we had in the wild loop.
+And then basically we have the same condition in here, like keep going until it. It hits the space. And then this is what we do on each iteration of the loop once we get to the end. So this thing right here, just desugars to exactly the same thing we had in the while loop.
 
 [00:10:07]
 Same logic, just a different way to write it. C doesn't have a concept for each loop or any other fancier for syntax than this. It's really just like initialization the condition to check at the end of each. Iteration of the loop and or, sorry, at the beginning of each iteration of the loop, and then the operation to run at the end of each iteration of the loop.
 
 [00:10:27]
-Okay, all right, so we started off with our start thing, which we actually are going to keep outside of the loop, so that we can have it in scope later on. Because the next thing we want to do after we. To get to right here is we want to say, well, let's throw that space away.
+Okay, all right, so we started off with our start thing, which we actually are going to keep outside of the loop, so that we can have it in scope later on. Because the next thing we want to do after we increment start to get to right here is we want to say, well, let's throw that space away.
 
 [00:10:44]
 Let's just advance past it. So having start be explicitly outside the loop means that we can then just do start plus plus to say, okay, we found the space, the loop exited, and now we're just going to skip over that space. So now if we print out start right here, what it's going to print is again, Again, because start is a memory address.
 
 [00:11:01]
-It's gonna say, okay, well that memory address is right here. So, if we literally say printf start, and then present S start, what's gonna get printed out to the screen is start and then slash blog [INAUDIBLE]. So it's this memory address. And then print out everything until we hit the, the null Terminator Now, what we have right here is our goal, sorry, our input is a GET and all that.
+It's gonna say, okay, well that memory address is right here. So, if we literally say printf start, and then %s, start, what's gonna get printed out to the screen is start and then /blog HTTP blah, blah. So it's this memory address. And then print out everything until we hit the, the null Terminator Now, what we have right here is our goal, sorry, our input is a GET and all that.
 
 [00:11:27]
 Let's say that we wanted to end up with a goal of that. What we could just say, look, just overwrite it to 0. Just take this as the input and just boom, just set it to the null terminator. And now when you print it out, it's gonna be, yeah, Okay, no problem.
 
 [00:11:40]
-There's, an alternator. Like we encountered it. We're not gonna print out anything. But that's not actually our goal, right? What we actually wanna do is we wanna end up with this thing right here. So let's go ahead and continue doing that right here in place. So now we're gonna do another for loop, where this time we are, starting off with, end equals start.
+There's a null terminator, like, we encountered it. We're not gonna print out anything. But that's not actually our goal, right? What we actually wanna do is we wanna end up with this thing right here. So let's go ahead and continue doing that right here in place. So now we're gonna do another for loop, where this time we are, starting off with, end equals start.
 
 [00:11:59]
 So we've defined an additional variable up here called end. This is gonna be another memory address. And now what we're trying to do is we're trying to find out okay. If this is the start of this thing where is the end. So the end is going to be basically where this other space happens because these are space separated.
 
 [00:12:14]
-So right now we're just trying to isolate this slash blog right in here. Okay so at first, what we're gonna do that is we're gonna, so I'm basically saying, like, okay, do exactly the same logic in here that we did before, where, we initialize end to be start, and then we just keep going until we hit a space.
+So right now we're just trying to isolate this /blog right in here. Okay so at first, what we're gonna do that is we're gonna, so I'm basically saying, like, okay, do exactly the same logic in here that we did before, where, we initialize end to be start, and then we just keep going until we hit a space.
 
 [00:12:32]
-So these two loops are gonna be identical. Just keep going until you hit a space, with the added, like, a little edge case of, and by the way, if along the way. We happen to encounter a null bite, then just early return from the entire function. So that's what both of these are doing.
+So these two loops are gonna be identical. Just keep going until you hit a space, with the added, like, a little edge case of, and by the way, if along the way. We happen to encounter a null byte, then just early return from the entire function. So that's what both of these are doing.
 
 [00:12:46]
 So this will end up with end being initialized to this space right here. So we had start, which found the first space going through the loop. We did start plus plus to get to the slash and then now we have gone through the loop to get end. Being right here where the other space is.
@@ -155,22 +155,22 @@ Now at this point, we're gonna say, okay, I wanna ensure that there is a slash h
 What we can do here is we can say end bracket negative one. And what this means is. Take this memory address, subtract one element from it. So subtract one byte from it. So in other words, if end is right here, we're going to subtract one and get to that G right there, and basically say, if that is a slash.
 
 [00:13:31]
-In other words, if it was a get of slash, blog slash, then in that case, we're going to subtract one from end. So this is basically a way of handling in a, very see, like way the edge case, where? Okay, well, what if we got slash blog with a slash at the end.
+In other words, if it was a GET of /blog/, then in that case, we're going to subtract one from end. So this is basically a way of handling in a, very C like way the edge case, where? Okay, well, what if we got slash blog with a slash at the end.
 
 [00:13:45]
-So / blog / and / blog, we want to treat those the same way. This is this does that it basically says we've ended up with end being at this, the address of the space right here, if there is a slash of that space right there, then we're just going to move it back one, so that it ends up being Them right there.
+So / blog / and / blog, we want to treat those the same way. This is this does that it basically says we've ended up with end being at this, the address of the space right here, if there is a slash of that space right there, then we're just going to move it back one, so that it ends up being right there.
 
 [00:14:02]
 And then basically we say, okay, cool, if there was a space there, then just move back one, and otherwise we're actually going to write a slash in there. So now what we've done is we've essentially said, okay, cool, either there was a slash there and a space after it, in which case we moved back to use the slash that was already there, or if there wasn't a slash there, we're going to write one there.
 
 [00:14:20]
-Now note that this right here, this end[0]=, this is actually mutating the original request string. So we were passed in this request and you might look at this function signature and say like, two path takes a request, and then it returns the path from it. Therefore, obviously we're not gonna touch that request.
+Now note that this right here, this end[0]=, this is actually mutating the original request string. So we were passed in this request and you might look at this function signature and say like, to_path takes a request, and then it returns the path from it. Therefore, obviously we're not gonna touch that request.
 
 [00:14:39]
-We're just gonna look at it and we're gonna make a nice new And we're going to return the new path. Well, we could do that, but this is C. And actually the way that we're doing it here is the most efficient way to do it. If we wanted to make an entirely new string and then return it from the function, we're going to see how to do that later, but it would be actually significantly less efficient than if we just said, yeah, you know what?
+We're just gonna look at it and we're gonna make a nice new path and we're going to return the new path. Well, we could do that, but this is C. And actually the way that we're doing it here is the most efficient way to do it. If we wanted to make an entirely new string and then return it from the function, we're going to see how to do that later, but it would be actually significantly less efficient than if we just said, yeah, you know what?
 
 [00:14:58]
-This request, this is my memory, it's fair game. I can write to it if I want to, To, I can mutate it in place if I want to, and I do want to, I'm going to do it that way. So we're going to start by just looking at how to do it in the most efficient way, where we are actually mutating the bytes of the original string that we were passed in in order to get the path that we want to return.
+This request, this is my memory, it's fair game. I can write to it if I want to, I can mutate it in place if I want to, and I do want to, I'm going to do it that way. So we're going to start by just looking at how to do it in the most efficient way, where we are actually mutating the bytes of the original string that we were passed in in order to get the path that we want to return.
 
 [00:15:17]
 So essentially, what we're doing right here is we're saying, Okay, if we didn't already have a slash there for. From the original request now that we're going to put one right there. So we're essentially writing this slash right in here. And now, basically we've ended up with regardless of whether or not there was a slash there at the beginning, there is a slash there now.

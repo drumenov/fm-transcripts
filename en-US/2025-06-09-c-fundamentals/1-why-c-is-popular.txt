@@ -8,7 +8,7 @@ And not because it does amazing optimizations, although it does lots of those tw
 C++ is extraordinarily complicated and the compile times are massively longer than they are for C. So, C is still popular even in a world where C++ exists, even though C++ was designed to be the improvement over C. Because C++ added so much complexity and so much longer compile times that a lot of people are like, yeah, I know C and C++ and I prefer C.
 
 [00:01:00]
-One really direct example of what C gets you in terms of performance is what I'm gonna call the Local Static HTTP Server Perf Olympics. This is not a real competition. This is very unscientific, and it was done by me very quickly by measuring some different static HTTP servers and just loading up a download of the FrontendMaster's website.
+One really direct example of what C gets you in terms of performance is what I'm gonna call the Local Static HTTP Server Performance Olympics. This is not a real competition. This is very unscientific, and it was done by me very quickly by measuring some different static HTTP servers and just loading up a download of the FrontendMaster's website.
 
 [00:01:19]
 And seeing how fast they were able to load it into the browser. Very unscientific, but also a little bit of fun. So in third place with the bronze, we had Node.js. So this is Node's HTTP server package. This has about 2.3 million weekly downloads, it's extremely popular. It's the most popular way to do a static HTTP server in the Node.js ecosystem.
@@ -23,7 +23,7 @@ And it is the about 300 lines of C code we write in this workshop with only the 
 It's like, all of these are about under ten milliseconds of response time to like load all the different assets statically. But nevertheless, it is the case that pretty consistently, you can see that even though we're not really like, I didn't sit down and benchmark this, other than this silly little performance Olympics thing.
 
 [00:02:28]
-I didn't sit down and performance optimize the C thing. These are very mature, well written, well established, designed to be high performance HTTP servers written in Rust. Which has a reputation for Being a very fast language, and Node js, which, granted, has a lot more overhead than rust or C.
+I didn't sit down and performance optimize the C thing. These are very mature, well written, well established, designed to be high performance HTTP servers written in Rust. Which has a reputation for being a very fast language, and Node.js, which, granted, has a lot more overhead than Rust or C.
 
 [00:02:44]
 And still, just this example that I just made for this workshop, just by doing some basic bread and butter, just do things the way that kind of C encourages. We're able to get really, really fast performance just because C is just really, really not adding anything, even compared to Rust, yeah.
@@ -31,7 +31,7 @@ And still, just this example that I just made for this workshop, just by doing s
 [00:02:59]
 
 >> Speaker 2: Is it Node relying on C++ anyway as well to do that?
->> Richard Feldman: Yeah, so Node, under the hood, certainly the Node runtime is gonna be V8, and V8 is written in C++. It's multiple millions of lines [LAUGH] of C++ code, and billions, it takes forever. But yes, so when you're running your Node HTTP server, you are definitely executing a lot of code that was written in C++, nearly the JavaScript Virtual Machine, V8.
+>> Richard Feldman: Yeah, so Node, under the hood, certainly the Node runtime is gonna be V8, and V8 is written in C++. It's multiple millions of lines [LAUGH] of C++ code, and building it takes forever. But yes, so when you're running your Node HTTP server, you are definitely executing a lot of code that was written in C++, namely the JavaScript Virtual Machine, V8.
 
 [00:03:24]
 Yeah, [LAUGH] and nevertheless, [LAUGH] here we are. Cool, I do wanna mention there are some low overhead C alternatives. We're not gonna get into them in this course, but I do wanna at least mention them. So C++, of course, is like definitely the most popular of these, very, very complex.
@@ -43,7 +43,7 @@ It's absolutely huge, especially in the game dev space, but not just in game dev
 Nowhere near C++ levels of popularity, but Zed, like the code editor that I work on at work, Biome, which is the successor to Roam written in Rust. That's like a JavaScript ecosystem thing. Ripgrep, really popular, like grep alternative at the command line. I have a course on FrontendMasters about that if you wanna learn how to do Rust.
 
 [00:04:18]
-Zig, also very nice language, you might go see the terminal emulator bond in the JavaScript ecosystem, you might've heard of tiger beetle rock. The programming language I'm making is in the process as we speak of rewriting our compiler from rust to Zig. And there's plenty of other, this is like D, Odin, JAI, Carbon, lots of different languages are trying to say, hey, C has so many nice properties, but the ergonomics, there's just some problems with it.
+Zig, also very nice language, you might use Ghostty the terminal emulator. Bun in the JavaScript ecosystem, you might've heard of TigerBeetle, Roc, the programming language I'm making is in the process as we speak of rewriting our compiler from Rust to Zig. And there's plenty of others. There's like D, Odin, JAI, Carbon, lots of different languages are trying to say, hey, C has so many nice properties, but the ergonomics, there's just some problems with it.
 
 [00:04:43]
 It doesn't feel like a modern language because it's like half a century old. And people are trying to modernize it, hopefully without sacrificing the things that make it popular in the first place. Okay, all of these low overhead C alternatives definitely support C interop. So, not just languages that are trying to be C alternatives, but also like we said, Node.js and others, really, C interop is almost universal, because C is like the language that other languages use to talk to each other.

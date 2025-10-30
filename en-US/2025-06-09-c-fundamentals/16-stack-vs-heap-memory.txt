@@ -1,5 +1,5 @@
 [00:00:00]
->> Richard Feldman: Bring all that together, we've got our thing back here, we've got our struct stat metadata. We're calling fstat and the file descriptor, metadata address. We asked, what if I wanna read all the bytes? This is the answer to that question. So now that I've got my metadata populated, instead of saying char buffer bracket 100, I can say char buffer metadata.st_size.
+>> Richard Feldman: Bring all that together, we've got our thing back here, we've got our struct stat metadata. We're calling fstat on the file descriptor, metadata address. We asked, what if I wanna read all the bytes? This is the answer to that question. So now that I've got my metadata populated, instead of saying char buffer[100], I can say char buffer[metadata.st_size].
 
 [00:00:18]
 And this will basically say, now my buffer is, instead of being hard-coded at 100, it's going to reserve, again, in the functions memory, however many bytes that file size is. But unfortunately, this can very easily lead to a segmentation fault if we don't [LAUGH] double up on that, right?
@@ -35,10 +35,10 @@ And then, I need to remember, just like I remember the file descriptor, not only
 It doesn't matter, it's just I need to remember to do the sort of bookkeeping myself manually. Now, worth noting [LAUGH] that another thing that can happen is, remember I mentioned earlier that read says, tell me the most bytes to read, and then it returns how many bytes I actually read.
 
 [00:03:17]
-Now, I think that can also happen is, yeah, it can potentially say, look, if you give me a number that's too big, I'm just not gonna do that for you, I'm not gonna read that many bytes. So I actually experimented with this and found that if I asked, say, hey, read five gigabytes out of this file in a single read call.
+Now, a think that can also happen is, yeah, it can potentially say, look, if you give me a number that's too big, I'm just not gonna do that for you, I'm not gonna read that many bytes. So I actually experimented with this and found that if I asked, say, hey, read five gigabytes out of this file in a single read call.
 
 [00:03:34]
-Nock was like, nah, nah, nah, that's too many gigabytes, dial it down a little bit, that's that's too much. So the fix for this is that you read in multiple chunks. So instead of saying, I'm just gonna pass in, just read the entire thing. What you do is, you pick a chunk size that's smaller than that, and you essentially read one chunk at a time into your buffer, and then you can sort of deal with that in chunks.
+MacOS was like, nah, nah, nah, that's too many gigabytes, dial it down a little bit, that's that's too much. So the fix for this is that you read in multiple chunks. So instead of saying, I'm just gonna pass in, just read the entire thing. What you do is, you pick a chunk size that's smaller than that, and you essentially read one chunk at a time into your buffer, and then you can sort of deal with that in chunks.
 
 [00:03:58]
 And this is sort of the best practice if you're working with this in a production setting. Now, a lot of programming languages will paper over this. Of course, they're all calling read under the hood, and sometimes they'll offer you a read chunks function. Or sometimes, they'll just be like, yeah, I'll just do the chunks thing automatically for you kind of behind the scenes, and just build up a really big buffer usually using a malloc hook equivalent on the heap, just for you.
@@ -56,16 +56,16 @@ Why not, indeed? And this is also a very common pattern that you will see, is wh
 It's actually quite common to say, hey, I'm just gonna allocate on the stack exactly the memory that I need, because I don't need to read the entire thing at a time, I just need to know how big the file is so I know kind of when to stop.
 
 [00:05:20]
-Even better, this is gonna have better performance. And also, now there's no need to remember to call free later because we're only dealing with stack memory. We do need to grant to deal with the complexity of reading in chunks, but it turns out, we need to do that, anyway, if we wanna support actually reading very large files.
+Even better, this is gonna have better performance. And also, now there's no need to remember to call free later because we're only dealing with stack memory. We do need to, granted, deal with the complexity of reading in chunks, but it turns out, we need to do that, anyway, if we wanna support actually reading very large files.
 
 [00:05:35]
-Okay, so, to summarize all the things we talked about. We started out with opening a file and then remembering to close it later, very important. Getting its size by using the Fstat, and then we talked about structs and how those get populated, and all the API considerations around that.
+Okay, so, to summarize all the things we talked about. We started out with opening a file and then remembering to close it later, very important. Getting its size by using the fstat, and then we talked about structs and how those get populated, and all the API considerations around that.
 
 [00:05:50]
-Talked about reading the contents of the file into an actual buffer, and how we can't do reads that are too big. So, although it might make sense theoretically, to do a malloc so we can just skip the exact size, and not worry about overflowing the stack. Actually, in practice, we end up probably wanting to do a chunked read, anyway, because the operating system will otherwise give us an error.
+Talked about reading the contents of the file into an actual buffer, and how we can't do reads that are too big. So, although it might make sense theoretically, to do a malloc so we can just get the exact size, and not worry about overflowing the stack. Actually, in practice, we end up probably wanting to do a chunked read, anyway, because the operating system will otherwise give us an error.
 
 [00:06:09]
-And then, finally, we talked about stack vs heap, and sort of the trade offs there. Stack, you don't have to worry about managing lifetimes, remember when you call free. But the heap is much, much bigger, and although there's some ergonomic benefits, there are some performance downsides. Number one, malloc and free are definitely considerably slower than using the stack.
+And then, finally, we talked about stack vs heap, and sort of the trade offs there. Stack, you don't have to worry about managing lifetimes, remembering when to call free. But the heap is much, much bigger, and although there's some ergonomic benefits, there are some performance downsides. Number one, malloc and free are definitely considerably slower than using the stack.
 
 [00:06:25]
 And also there are some correctness downsides, where if you call free at the wrong time, it's not just that you might get a memory leak if you forget to do it, but also if you call it too soon, you get a use after free, which is really bad.
@@ -97,7 +97,7 @@ You could pick any name you want here, you can define your own structs also. So 
 And then you write all of the fields and choose the names for them. Cool, other questions?
 >> Richard Feldman: Yeah.
 >> Student: What do you think about memory arenas?
->> Richard Feldman: Yeah, great. Memory arenas are basically an alternative to malloc and free, where you essentially, how do I explain this concisely? So I guess it would be like, if inside of two path we passed a third argument that was basically the memory address to, it's almost like you're making a little custom stack of your own [LAUGH] that can kind of like, you can just kind of allocate some memory into.
+>> Richard Feldman: Yeah, great. Memory arenas are basically an alternative to malloc and free, where you essentially, how do I explain this concisely? So I guess it would be like, if inside of to_path we passed a third argument that was basically the memory address to, it's almost like you're making a little custom stack of your own [LAUGH] that can kind of like, you can just kind of allocate some memory into.
 
 [00:09:01]
 But unlike malloc and free, with arenas, you never have to free them because you never have to free the individual allocations that you make into them. Because they basically say, okay, let me reserve a big chunk of memory here, and very time I want an allocation, I put it into that.

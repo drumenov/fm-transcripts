@@ -21,7 +21,7 @@ I'm gonna make a char of a request array.
 5
 00:00:11.262 --> 00:00:15.436
 This is going to end up being the string
-that we're going to send to our to path
+that we're going to send to our to_path
 
 6
 00:00:15.436 --> 00:00:16.099
@@ -39,7 +39,7 @@ I'm gonna pass this address off
 
 9
 00:00:25.420 --> 00:00:30.430
-to our to path function that we
+to our to_path function that we
 wrote back in part three, yeah.
 
 10
@@ -163,7 +163,7 @@ does anyone know what while 1 does?
 35
 00:01:46.828 --> 00:01:50.426
 Infinite loop, yes, exactly, same thing
-as while 2, except again, this is C.
+as while true, except again, this is C.
 
 36
 00:01:50.426 --> 00:01:54.286
@@ -172,7 +172,7 @@ I bet if you search GitHub for
 
 37
 00:01:54.286 --> 00:01:58.520
-wild parentheses, one, you'll find
+while (1), you'll find
 quite a lot of those in C repos.
 
 38
@@ -202,17 +202,17 @@ has come in on this socket on port 8080.
 43
 00:02:14.685 --> 00:02:18.447
 And once it does then we're gonna start
-handling stuff, and the reason is so,
+handling stuff, and the reason its
 
 44
 00:02:18.447 --> 00:02:21.582
-one is because, all we wanna be
+while (1) is because, all we wanna be
 listening on this indefinitely.
 
 45
 00:02:21.582 --> 00:02:26.003
 This is how static HTTP servers work, they
-just keep working until you Ctrl C 11 and
+just keep working until you Ctrl+C them and
 
 46
 00:02:26.003 --> 00:02:27.387
@@ -289,11 +289,11 @@ we were doing back here for bind,
 61
 00:03:11.473 --> 00:03:15.411
 if you remember this thing where we're
-doing the parsing the address of this and
+doing the passing the address of this and
 
 62
 00:03:15.411 --> 00:03:18.977
-then casting it to the socket, or
+then casting it to the sockaddr
 then passing the size of the address.
 
 63
@@ -350,7 +350,7 @@ like okay, I'm listening on this port.
 
 74
 00:03:53.372 --> 00:03:58.269
-I have accepted something that is, say,
+I have accepted something, that is to say,
 I waited until some new thing came in,
 
 75
@@ -533,7 +533,7 @@ close all these for you anyway.
 112
 00:05:53.154 --> 00:05:56.217
 So you don't really need to bother
-to accept as a matter of just kinda
+to except as a matter of just kinda
 
 113
 00:05:56.217 --> 00:05:59.549
@@ -576,7 +576,7 @@ do in the middle here.
 
 121
 00:06:19.028 --> 00:06:21.081
-So again, this is sort of dot.dot,
+So again, this is sort of ( ... ),
 
 122
 00:06:21.081 --> 00:06:23.946
@@ -628,12 +628,12 @@ It works exactly the same way.
 132
 00:06:47.676 --> 00:06:52.220
 We say give it the destination,
-I'm gonna stop all over that,
+I'm gonna stomp all over that,
 
 133
 00:06:52.220 --> 00:06:57.474
-this is req, that's a way that we'd
-allocated with max request bytes.
+this is req, that's our array that we'd
+allocated with max request bytes, back up here.
 
 134
 00:06:57.474 --> 00:07:01.421
@@ -670,7 +670,7 @@ kind of stuff that we did before.
 
 141
 00:07:21.272 --> 00:07:25.085
-So we say, call to path like we did
+So we say, call to_path like we did
 everything we've been building up to at
 
 142
@@ -732,7 +732,7 @@ open this file and I've read this content.
 
 154
 00:08:06.346 --> 00:08:10.446
-So index.html or blog index.html,
+So index.html or blog/index.html,
 whatever, and then I just write it to
 
 155
@@ -771,12 +771,12 @@ the contents of like index.
 
 162
 00:08:34.055 --> 00:08:36.164
-If I type in localhost 8080/blog,
+If I type in localhost:8080/blog,
 
 163
 00:08:36.164 --> 00:08:40.008
 it's gonna print out the contents of
-blog/index on HTML, all of that's
+blog/index.html, all of that's
 
 164
 00:08:40.008 --> 00:08:43.987
@@ -835,11 +835,11 @@ contents of the file, and we're all set.
 175
 00:09:19.356 --> 00:09:23.860
 So in order to do that, we can actually
-just like, keep the content says its own
+just like, keep the contents its own
 
 176
 00:09:23.860 --> 00:09:28.026
-right, and we can just manually write
+write, and we can just manually write
 200 okay and then a blank line,
 
 177
@@ -921,7 +921,7 @@ does on the file system.
 
 193
 00:10:20.474 --> 00:10:24.534
-Then we call to path, which was the
+Then we call to_path, which was the
 function that we wrote back in part three,
 
 194
@@ -936,7 +936,7 @@ the request that we got from the browser.
 
 196
 00:10:32.741 --> 00:10:36.151
-And then we do the open fstat read thing
+And then we do the open, fstat, read, thing
 that we did in the previous section to get
 
 197
@@ -1030,7 +1030,7 @@ there, we take the request that we read
 
 216
 00:11:32.313 --> 00:11:35.548
-in, we call to path on it, read from
+in, we call to_path on it, read from
 the file system to get the contents of
 
 217
@@ -1049,6 +1049,6 @@ hello world on the metal.
 
 220
 00:11:44.244 --> 00:11:49.513
-Same exact right function accept instead
-of one, we just write it to the socket.
+Same exact write function except instead
+of 1, we just write it to the socket.
 

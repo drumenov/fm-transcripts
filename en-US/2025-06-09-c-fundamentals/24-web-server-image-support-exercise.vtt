@@ -12,8 +12,8 @@ have this whole big long list of,
 
 3
 00:00:10.230 --> 00:00:16.920
-includes up top but we also have ifdef
-Linux here for our sys slash send file.
+includes up top but we also have #ifdef
+Linux here for our sys/sendfile.
 
 4
 00:00:16.920 --> 00:00:20.450
@@ -32,7 +32,7 @@ now you can see if I refresh and
 
 7
 00:00:27.754 --> 00:00:32.193
-try to load the front end masters page it
+try to load the Frontend Masters page it
 doesn't work at all, that's okay, though.
 
 8
@@ -52,8 +52,8 @@ much nicer than a blank page,
 
 11
 00:00:40.294 --> 00:00:42.385
-which is a working front
-end masters homepage.
+which is a working frontend
+Masters homepage.
 
 12
 00:00:42.385 --> 00:00:44.857
@@ -75,8 +75,8 @@ through some of the source code here.
 
 16
 00:00:53.934 --> 00:00:56.654
-I did decide to use the pound define
-style here instead of constant,
+I did decide to use the #define
+style here instead of const int,
 
 17
 00:00:56.654 --> 00:00:59.914
@@ -86,12 +86,12 @@ Linux distros that doesn't support it.
 18
 00:00:59.914 --> 00:01:04.264
 But if you're on macOS,
-you could just do constant here.
+you could just do const int here, if you wanted to.
 
 19
 00:01:04.264 --> 00:01:10.608
-We're doing the, jpeg,
-css png, jpej, JS, etc.
+We're doing the, jpg,
+css, png, jpeg, js, etc.
 
 20
 00:01:10.608 --> 00:01:13.343
@@ -129,7 +129,7 @@ the one thing that we are missing here is
 27
 00:01:29.356 --> 00:01:32.342
 that I have not actually
-implemented the call to send file.
+implemented the call to sendfile.
 
 28
 00:01:32.342 --> 00:01:36.371
@@ -144,7 +144,7 @@ just go check out the docs for
 30
 00:01:40.915 --> 00:01:45.474
 these and try to implement the two
-different calls to send file.
+different calls to sendfile.
 
 31
 00:01:45.474 --> 00:01:50.104
@@ -153,8 +153,8 @@ here is we are actually making
 
 32
 00:01:50.104 --> 00:01:53.723
-these variables of byte sent and
-send failed locally.
+these variables of byte_sent and
+send_failed locally.
 
 33
 00:01:53.723 --> 00:01:56.587
@@ -169,7 +169,7 @@ curly braces around this.
 35
 00:02:00.295 --> 00:02:03.510
 These are basically out dented and
-only one of the other is going to get
+only one or the other is going to get
 
 36
 00:02:03.510 --> 00:02:07.244
@@ -179,7 +179,7 @@ relevant because we end up using it later.
 37
 00:02:07.244 --> 00:02:09.885
 But they are indented because
-they're inside the ifdef.
+they're inside the #ifdef.
 
 38
 00:02:09.885 --> 00:02:13.287
@@ -209,7 +209,7 @@ at the docs for these two things.
 43
 00:02:29.383 --> 00:02:34.726
 And I will warn you this, well especially
-the MacOS 1 is a little bit funky,
+the MacOS one is a little bit funky,
 
 44
 00:02:34.726 --> 00:02:39.917
@@ -275,7 +275,7 @@ with like read will return how many bytes
 
 57
 00:03:20.047 --> 00:03:21.306
-B Bytes were actually read.
+were actually read.
 
 58
 00:03:21.306 --> 00:03:25.227
@@ -343,17 +343,17 @@ finally get successfully sent.
 71
 00:04:00.684 --> 00:04:03.737
 Now how do we get this
-actual byte sent value?
+actual bytes_sent value?
 
 72
 00:04:03.737 --> 00:04:07.928
 This is one of the ways where Linux and
-macros APIs differ.
+MacOS APIs differ.
 
 73
 00:04:07.928 --> 00:04:10.102
 So in the Linux one,
-send file just returns it.
+sendfile just returns it.
 
 74
 00:04:10.102 --> 00:04:14.731
@@ -366,7 +366,7 @@ the return value was -1.
 
 76
 00:04:16.407 --> 00:04:20.089
-If it was sent failed,
+If it was sent_failed,
 then Ok, fine, we break.
 
 77
@@ -491,7 +491,7 @@ to make this error handling better.
 
 102
 00:05:37.607 --> 00:05:39.095
-This is not really specific to send file.
+This is not really specific to sendfile.
 
 103
 00:05:39.095 --> 00:05:40.473
@@ -500,11 +500,11 @@ This is just in general.
 104
 00:05:40.473 --> 00:05:44.337
 If we're writing to the socket,
-and whether it's via send file or
+and whether it's via sendfile or
 
 105
 00:05:44.337 --> 00:05:49.098
-via right and that operation fails after
+via write and that operation fails after
 we've already sent some amount of data,
 
 106
@@ -520,7 +520,7 @@ sending fail and we also need to know how
 108
 00:05:56.544 --> 00:06:00.522
 many bytes were sent and the MacOS API for
-this or the the BSC one.
+this or the the BSD one.
 
 109
 00:06:00.522 --> 00:06:03.422
@@ -530,11 +530,11 @@ here we're actually doing
 110
 00:06:03.422 --> 00:06:08.134
 basically the number of bytes that were
-sent is actually equal to stats.st,
+sent is actually equal to stats.st_size
 
 111
 00:06:08.134 --> 00:06:11.986
-size, or at least we're assuming
+or at least we're assuming
 that as the starting point.
 
 112
@@ -553,7 +553,7 @@ bytes that you want to send.
 
 115
 00:06:23.249 --> 00:06:27.289
-And then also, when we call send file, it
+And then also, when we call sendfile, it
 will, after reading that to see how many
 
 116
@@ -603,7 +603,7 @@ in other operating systems.
 125
 00:06:59.883 --> 00:07:02.597
 A classic example of this that
-happens today is IOU ring.
+happens today is io_uring.
 
 126
 00:07:02.597 --> 00:07:03.836
@@ -630,7 +630,7 @@ It's just not available in Mac OS,
 131
 00:07:12.083 --> 00:07:14.488
 they don't have a direct
-equivalent of IOU ring.
+equivalent of io_uring.
 
 132
 00:07:14.488 --> 00:07:18.983
@@ -639,12 +639,12 @@ platform like networking library,
 
 133
 00:07:18.983 --> 00:07:21.595
-that uses IOU ring,
+that uses io_uring,
 what you end up with is.
 
 134
 00:07:21.595 --> 00:07:26.442
-If dev on Linux is huge because IOU ring
+#ifdef on Linux is huge because io_uring
 is very different in terms of how it sets
 
 135
@@ -741,7 +741,7 @@ website served locally, blazing fast.
 
 154
 00:08:28.776 --> 00:08:32.342
-[LAUGH] See about 300 lines of
+[LAUGH] C about 300 lines of
 code that we built from scratch
 
 155

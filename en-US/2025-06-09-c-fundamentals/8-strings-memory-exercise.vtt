@@ -38,7 +38,7 @@ here is that HTTP, 1.1 200 okay, and
 
 9
 00:00:24.733 --> 00:00:27.632
-it says that output was from right,
+it says that output was from write,
 and this is from printf.
 
 10
@@ -63,7 +63,7 @@ to include string.h above.
 14
 00:00:40.954 --> 00:00:44.310
 So, this is essentially going to be like
-calling right just like we did before,
+calling write just like we did before,
 
 15
 00:00:44.310 --> 00:00:46.280
@@ -111,7 +111,7 @@ you wanted a string.
 24
 00:01:10.674 --> 00:01:14.653
 So, for example, like you could put it
-right after the HTTP, sorry, HTTP and
+right after the HTTT, sorry, HTT in
 
 25
 00:01:14.653 --> 00:01:17.307
@@ -140,7 +140,7 @@ thing that's like, hey,
 
 30
 00:01:29.646 --> 00:01:31.271
-that output was from right,
+that output was from write,
 this is from printf.
 
 31
@@ -166,7 +166,7 @@ potentially.
 35
 00:01:45.080 --> 00:01:49.629
 And then finally, try changing this back
-to percent s, and then replace the printfs
+to percent s, and then replace the printf's
 
 36
 00:01:49.629 --> 00:01:53.680
@@ -249,7 +249,7 @@ been fair enough.
 52
 00:02:41.003 --> 00:02:45.098
 And the solution to that is we're just
-going to go grab string dot h, and
+going to go grab string.h, and
 
 53
 00:02:45.098 --> 00:02:48.593
@@ -306,7 +306,7 @@ now it's gonna truncate that.
 
 64
 00:03:18.049 --> 00:03:22.405
-It's just gonna say HTTP, okay and notice
+It's just gonna say HTT, okay and notice
 that this affects not only write, but
 
 65
@@ -317,7 +317,7 @@ because printf is automatically doing
 66
 00:03:25.130 --> 00:03:27.748
 the thing that we are now
-doing manually and write.
+doing manually in write.
 
 67
 00:03:27.748 --> 00:03:31.073
@@ -393,7 +393,7 @@ printing out the actual string, but
 
 82
 00:04:12.800 --> 00:04:17.097
-in print F with the ZUD, that's saying,
+in printf with the ZUD, that's saying,
 okay, treat this as a 64-bit integer.
 
 83
@@ -642,7 +642,7 @@ this as if it were a pointer to a,
 
 134
 00:07:00.811 --> 00:07:06.942
-it's a tar star, it's the, as if it were
+it's a char *, it's the, as if it were
 the address of the beginning of a string.
 
 135
@@ -730,7 +730,7 @@ like in most languages.
 152
 00:07:57.931 --> 00:08:00.764
 This is where you get a null pointer
-exception of course he doesn't
+exception of course C doesn't
 
 153
 00:08:00.764 --> 00:08:03.292
@@ -744,7 +744,7 @@ I don't know what to do with that.
 155
 00:08:04.777 --> 00:08:07.358
 I'm certainly not gonna like to go and
-try and read memory and
+try and read memory at
 
 156
 00:08:07.358 --> 00:08:09.801
@@ -753,7 +753,7 @@ definitely gonna seg fault.
 
 157
 00:08:09.801 --> 00:08:13.219
-So, printf has special case this
+So, printf has special cased this
 to be like, if you give me a zero,
 
 158
@@ -789,11 +789,11 @@ point that this is an integer at runtime.
 164
 00:08:34.889 --> 00:08:37.073
 And so many of the things
-that we're gonna see and
+that we're gonna see in
 
 165
 00:08:37.073 --> 00:08:39.264
-see are actually integers
+C are actually integers
 of memory addresses.
 
 166

@@ -7,7 +7,7 @@
 Is just that memory is basically a gigantic array of bytes. They're all these ones and zeros, and you can choose to interpret them however you want. As the C programmers or other low level languages, not only can you interpret these however you want, but as we've seen, there are actually specific benefits.
 
 [00:00:32]
-Especially when it comes to performance of making use of that understanding of the gigantic array of bytes, concept of memory. Granted, we are doing manual memory management there's the malloc and free and memory on the stack and buffer overruns and reading into garbage memory and all this initialized stuff.
+Especially when it comes to performance of making use of that understanding of the gigantic array of bytes, concept of memory. Granted, we are doing manual memory management there's the malloc and free and memory on the stack and buffer overruns and reading into garbage memory and all this uninitialized stuff.
 
 [00:00:47]
 There's a lot of performance to be had, but also a ton a ton of foot guns. If you've ever thought pointers were hard, hopefully the fact that we just talked about memory addresses and integers a lot [LAUGH] will make that at least a little bit easier. But if anyone ever says pointer, and you're like, what's a pointer?
@@ -46,10 +46,10 @@ This is how you would do this. So one of the reasons that I wanted to make sure 
 This will tell you how to do that, and it's gonna be using exactly the same styles of docs and the types and all of that type of stuff that we learned about in this course. So if you want to go out and build your own Node.js add ons, let's say you're writing something like, I just really need some really high performance section here.
 
 [00:04:35]
-If I could make this one part of my NodeJs server a little bit faster, this is a way you can do that. You can just bust out into C and do that. Or if you're like, I wanna write it in Rust, you could use C as an intermediary, because the Node.js API works in terms of C.
+If I could make this one part of my Node.js server a little bit faster, this is a way you can do that. You can just bust out into C and do that. Or if you're like, I wanna write it in Rust, you could use C as an intermediary, because the Node.js API works in terms of C.
 
 [00:04:48]
-They actually made their library compatible with C++, but C++ is a superset of C. So anything that works in C++, you can also do in C. I've actually gotten paid at work to write a Node.js add-on [LAUGH] before. So I can confirm that this definitely works with just C, you don't need to know C to use this.
+They actually made their library compatible with C++, but C++ is a superset of C. So anything that works in C++, you can also do in C. I've actually gotten paid at work to write a Node.js C add-on [LAUGH] before. So I can confirm that this definitely works with just C, you don't need to know C++ to use this.
 
 [00:05:06]
 And essentially, this is a way that you can just speed up your your Node.js programs, or if you have some particular C library that you wanna use, that you wanna really get in there, and nobody's made a wrapper for that, you can totally do that. And in fact, you can even then distribute it on NPM.
@@ -58,7 +58,7 @@ And essentially, this is a way that you can just speed up your your Node.js prog
 I did wanna note that if you're trying to get into a large C or C++ code base, such as like a Postgres or an operating system or something like that, building it can be a significant challenge. So for this course, we're dealing with one .c file, building it not difficult.
 
 [00:05:35]
-If you're dealing with a gigantic C code base or C++ code base, building it, far from trivial. Fortunately, I do have a recommendation of how to learn about how to build these things. Andrew Kelley, who created Zig, gave this awesome talk called how to build software from source.
+If you're dealing with a gigantic C code base or C++ code base, building it, far from trivial. Fortunately, I do have a recommendation of how to learn about how to build these things. Andrew Kelley, who created Zig, gave this awesome talk called "How to build software from source".
 
 [00:05:49]
 And depending on what programming language you're used to using, you might think that's easy. Why would you give a whole talk about that? It's not so easy when you're talking about large C and C++ projects. But if you watch this talk, he gives a lot of really, really good practical tips for how to actually configure and then build these large projects from source.
@@ -67,7 +67,7 @@ And depending on what programming language you're used to using, you might think
 This is from the conference software you can love in 2023. And here is a link if you wanna go check that out. I also wanted to plug this book. This is a very famous book. I actually bought on eBay a copy. This is a picture of someone else's book.
 
 [00:06:21]
-But if you ever hear what K&R, this is the book they're talking about. So this is Brian Curnahan and Dennis Ritchie. So Dennis Ritchie was a creative C, and then Brian is a very famous C user and writer and author and stuff like that. This is the first edition, which I did wanna make sure and get cuz it has some fun little anecdotes in here about really old hardware stuff that aren't really applicable anymore.
+But if you ever hear what K&R, this is the book they're talking about. So this is Brian Kernighan and Dennis Ritchie. So Dennis Ritchie was a creative C, and then Brian is a very famous C user and writer and author and stuff like that. This is the first edition, which I did wanna make sure and get cuz it has some fun little anecdotes in here about really old hardware stuff that aren't really applicable anymore.
 
 [00:06:43]
 But this is also just kind of a seminal it's one of the classic books that people talk about, right up there with structure and interpretation of computer programs as just even beyond the C stuff. It's also got a lot of advice about philosophies around around writing programming, and as we seen in this workshop, philosophies around writing C code are pretty different from best practices in other languages.
@@ -82,7 +82,7 @@ He's also got a little animated plane that flies across when you go to the homep
 I personally have read through the optimizing software in C++ one. Some of it in C++ specific, but a whole lot of it is really, really just like low level hardware. Like here's what your CPU is doing, here are some tips and tricks. Very, very, very detailed, pretty dense, but if you really wanna go down the rabbit hole on this stuff, and you thought that some of the crazy tricks that we did at the end of a part six were fun, you can find more stuff like that at this website.
 
 [00:08:00]
-If you really wanna go all the way down the rabbit hole, Casey Muratore, who you might have seen on like the primogen stream. He's a frequent guest on there. He is an old school game engine programmer, and he made this unbelievably detailed course called performance aware programming. It is many, many, many hours, I've watched through all that.
+If you really wanna go all the way down the rabbit hole, Casey Muratori, who you might have seen on like ThePrimeagen stream. He's a frequent guest on there. He is an old school game engine programmer, and he made this unbelievably detailed course called performance aware programming. It is many, many, many hours, I've watched through all that.
 
 [00:08:20]
 I don't think I'm quite caught up right now. But it goes into things like the very beginning of the course is you go through and build a simulator for a really old CPU. So you can actually see literally what is the CPU doing when it gets the ones and zeros in.
@@ -98,7 +98,7 @@ And he actually goes through a debugger and steps into showing you all the layer
 
 [00:09:24]
 And I also wanted to mention, yeah, there was a question?
->> Speaker 2: Just on a similar vein, Mishko Avery, the creator of Angular, has a course on Frontend Masters called Bare Metal JavaScript. And he builds a CPU register and-.
+>> Speaker 2: Just on a similar vein, Mishko Hevery, the creator of Angular, has a course on Frontend Masters called Bare Metal JavaScript. And he builds a CPU register and-.
 >> Richard Feldman: Nice.
 >> Speaker 2: Memory and all that kind of stuff from scratch.
 
@@ -112,10 +112,10 @@ So, something to check out if you're already on Frontend Masters.
 Other than the name C, which I'm sure was like a pun on C and C++, it almost has nothing in common with C and a lot, a lot in common with Java. That's, I guess, a quick summary of it. [LAUGH] Yeah. Yeah, cool. So some low overhead C alternatives.
 
 [00:10:20]
-We mentioned a couple of these, like C++ definitely way off the complexity into the spectrum, probably the most complicated popular language on the planet right now. Russ, strong contender, also extremely complicated language, but has way more guarantees and a lot of ergonomics benefits compared to C++. Also has the benefit of not having been created in 1980s so [LAUGH] got to benefit from a lot of advances in various things.
+We mentioned a couple of these, like C++ definitely way off the complexity into the spectrum, probably the most complicated popular language on the planet right now. Rust, strong contender, also extremely complicated language, but has way more guarantees and a lot of ergonomics benefits compared to C++. Also has the benefit of not having been created in 1980s so [LAUGH] got to benefit from a lot of advances in various things.
 
 [00:10:44]
-The D programming language is also pretty old. D is notable for like anytime you mention C++ or Russ or Zig on Hacker News, someone will be like, and D, what about D? But it's just not like really picking up as much steam. It's been around for a long time.
+The D programming language is also pretty old. D is notable for like anytime you mention C++ or Rust or Zig on Hacker News, someone will be like, and D, what about D? But it's just not like really picking up as much steam. It's been around for a long time.
 
 [00:10:57]
 It's very powerful, has a lot of things, but it doesn't really seem, if I'm being honest, like it's gonna take off anytime soon. Zig is definitely like having a significant uptick in popularity by basically being a reaction to these sort of more complex C alternatives, like C++ and Rust and D and then Odin and JAI are two significantly less popular.
@@ -127,7 +127,7 @@ But also, kind of taking the same basic approach of, yeah, let's try to improve 
 He's made this programming language. JAI is specifically designed to be for games, and it's based on his frustrations with C++. And it has some significant differences between Zig and Odin, but I haven't actually used it, so I can't really comment on it in depth other than to say that right now on the simplest C alternatives, definitely Zig of these three is by far the most popular right now.
 
 [00:11:58]
-And time will tell how those things shaken. Also all of these low overhead C Alternatives they all support C and Rob just like most mainstream languages do because C is the language that other languages use talk to each other as previously discussed. Like I mentioned earlier, I mean C is basically the most universal language in the world today and now that you know C you know the most universal in the world.
+And time will tell how those things shakeout. Also all of these low overhead C Alternatives they all support C interop just like most mainstream languages do because C is the language that other languages use to talk to each other as previously discussed. Like I mentioned earlier, I mean C is basically the most universal language in the world today and now that you know C you know the most universal in the world.
 
 [00:12:22]
 Thanks very much.

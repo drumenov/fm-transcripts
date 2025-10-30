@@ -481,7 +481,7 @@ kilohertz on that 1-core.
 
 102
 00:04:59.458 --> 00:05:04.878
-So not only was it 110 of a megahertz,
+So not only was it 1/10 of a megahertz,
 not even close to a gigahertz.
 
 103
@@ -539,7 +539,7 @@ something to run acceptably fast on this
 114
 00:05:38.300 --> 00:05:43.193
 kind of hardware, imagine what you
-can do with something that has 3264,
+can do with something that has 32, 64
 
 115
 00:05:43.193 --> 00:05:47.354
@@ -924,7 +924,7 @@ at least the C ABI, which is essentially
 195
 00:09:46.308 --> 00:09:50.376
 the way that C represents things in
-memory even if it's not literal.c files.
+memory even if it's not literal .c files.
 
 196
 00:09:50.376 --> 00:09:52.986

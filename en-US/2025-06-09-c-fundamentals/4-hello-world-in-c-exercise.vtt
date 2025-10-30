@@ -80,7 +80,7 @@ exercises one through six.
 17
 00:00:43.594 --> 00:00:48.000
 So we have six different sections here,
-all of this, 1.c2, .C, etc.
+all of this, 1.c, 2.c, etc.
 
 18
 00:00:48.000 --> 00:00:50.500
@@ -104,7 +104,7 @@ on your disk.
 22
 00:00:56.953 --> 00:00:59.442
 You can just delete those later
-if you want, but his is C.
+if you want, but this is C.
 
 23
 00:00:59.442 --> 00:01:00.807
@@ -113,7 +113,7 @@ We compiled the binaries here.
 24
 00:01:00.807 --> 00:01:06.476
 So when I paste this command and
-I say gcc-o app1, the -o means output.
+I say gcc -o app1, the -o means output.
 
 25
 00:01:06.476 --> 00:01:08.974
@@ -141,7 +141,7 @@ something app1.exe right here.
 30
 00:01:19.103 --> 00:01:22.073
 Then you give it the name of
-the source file, which is o1.C, and
+the source file, which is 1.c, and
 
 31
 00:01:22.073 --> 00:01:24.567
@@ -155,8 +155,8 @@ technically GCC stands for
 
 33
 00:01:29.717 --> 00:01:34.284
-the Goo C compiler, sorry,
-Goo Compiler Collection,
+the GNU C compiler, sorry,
+GNU Compiler Collection,
 
 34
 00:01:34.284 --> 00:01:37.217
@@ -189,12 +189,12 @@ compiler that Mac OS uses.
 40
 00:01:53.852 --> 00:01:58.209
 And the way you can tell this is if you
-say GCC dash version, it's, this is Clang,
+say GCC -version, it's, this is Clang,
 
 41
 00:01:58.209 --> 00:02:01.277
 which is kind of same exact
-thing if you say clang-version.
+thing if you say clang -version.
 
 42
 00:02:01.277 --> 00:02:04.828
@@ -207,7 +207,7 @@ Linux, then it's actual real GCC.
 
 44
 00:02:07.592 --> 00:02:08.711
-So if you do GCC-version,
+So if you do GCC -version,
 
 45
 00:02:08.711 --> 00:02:11.641
@@ -317,7 +317,7 @@ change is we're gonna change this string
 
 67
 00:03:12.529 --> 00:03:13.508
-to HelloWorld\end.
+to HelloWorld\n.
 
 68
 00:03:13.508 --> 00:03:16.488
@@ -421,7 +421,7 @@ at the top.
 89
 00:04:05.344 --> 00:04:08.497
 So this is basically just switching
-it over from right to printf and
+it over from write to printf and
 
 90
 00:04:08.497 --> 00:04:12.007
@@ -474,7 +474,7 @@ to see the output of your program.
 100
 00:04:41.874 --> 00:04:46.885
 So after I do this, and then I do
-echo$?at print zero, because that is
+echo $? it prints zero, because that is
 
 101
 00:04:46.885 --> 00:04:52.326
@@ -605,7 +605,7 @@ shorter, so we'll make it just 10, so
 
 129
 00:05:55.775 --> 00:05:58.426
-that's HelloWorld and
+that's HelloWor and
 then once again, the percent sign is.
 
 130
@@ -754,7 +754,7 @@ are being interpreted by the terminal as
 161
 00:07:16.368 --> 00:07:20.100
 being text, although, obviously
-a lot of these are not text Text.
+a lot of these are not text.
 
 162
 00:07:20.100 --> 00:07:26.616
@@ -773,7 +773,7 @@ spitting out all this memory.
 
 165
 00:07:34.057 --> 00:07:36.561
-As you can see the level of
+As you can see this is the level of
 memory safety we're doing, and
 
 166
@@ -856,8 +856,8 @@ and now we are actually importing that
 
 183
 00:08:17.496 --> 00:08:22.395
-because this unisted.h is where Write
-comes from and printf comes from stduio.
+because this unistd.h is where Write
+comes from and printf comes from stdio.
 
 184
 00:08:22.395 --> 00:08:27.343
@@ -950,7 +950,7 @@ basically, if I want, I can change this to
 
 203
 00:09:21.259 --> 00:09:25.387
-be something else, percent s for a string,
+be something else, %s for a string,
 and then it's going to complain wait
 
 204
@@ -1104,7 +1104,7 @@ Okay, moving on.
 
 236
 00:10:51.748 --> 00:10:55.011
-Yeah, so we've had two different
+Yeah, so we've had printf both
 numbers and then finally, yeah,
 
 237
@@ -1128,7 +1128,7 @@ just pedantic with the language itself.
 241
 00:11:08.670 --> 00:11:12.581
 Is it worth anything to
-recast an intuit string?
+recast an int to a string?
 
 242
 00:11:12.581 --> 00:11:13.311
@@ -1208,7 +1208,7 @@ honestly, idiomatically,
 258
 00:11:57.287 --> 00:11:59.691
 I would just choose to
-use Print off to do that.
+use printf to do that.
 
 259
 00:11:59.691 --> 00:12:02.807
@@ -1266,8 +1266,8 @@ talk about this more later, but
 
 271
 00:12:22.054 --> 00:12:25.455
-literally, what pound
-include does is copy paste.
+literally, what
+#include does is copy paste.
 
 272
 00:12:25.455 --> 00:12:29.888
@@ -1281,7 +1281,7 @@ pasting them into your file.
 
 274
 00:12:34.253 --> 00:12:36.737
-That's what pound include does.
+That's what #include does.
 
 275
 00:12:36.737 --> 00:12:38.507
@@ -1290,7 +1290,7 @@ well, hang on a sec.
 
 276
 00:12:38.507 --> 00:12:41.372
-What if I have,, that thing which
+What if I have, that thing which
 depends on something else, and
 
 277
@@ -1333,7 +1333,7 @@ do a better job with imports and
 
 285
 00:13:11.060 --> 00:13:14.026
-stuff that to make it more of
+stuff like that to make it more of
 a first class semantic thing so
 
 286
@@ -1369,12 +1369,12 @@ something you're asking, which was.
 292
 00:13:32.124 --> 00:13:35.772
 What happens if there's 100
-different functions in std.io, .h,
+different functions in stdio.h,
 
 293
 00:13:35.772 --> 00:13:38.902
 but I'm only using one of them,
-what happens the other ones?
+what happens to the other ones?
 
 294
 00:13:38.902 --> 00:13:41.958

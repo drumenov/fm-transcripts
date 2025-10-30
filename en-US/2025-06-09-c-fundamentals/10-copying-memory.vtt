@@ -22,7 +22,7 @@ followed by /index.html.
 5
 00:00:12.696 --> 00:00:15.666
 So we've got our slash here, but
-we don't have the index html and
+we don't have the index.html and
 
 6
 00:00:15.666 --> 00:00:17.832
@@ -32,7 +32,7 @@ the null terminator there.
 7
 00:00:17.832 --> 00:00:20.676
 Like as this thing continues on,
-it's got like the ht headers and
+it's got like the HTTP headers and
 
 8
 00:00:20.676 --> 00:00:21.770
@@ -41,7 +41,7 @@ all that stuff in there.
 9
 00:00:21.770 --> 00:00:25.691
 There is no null terminator after
-the l and html like we want.
+the l in html like we want.
 
 10
 00:00:25.691 --> 00:00:28.921
@@ -122,11 +122,11 @@ but it does.
 26
 00:01:17.258 --> 00:01:20.375
 So basically we're saying,
-look, start writing the bytes.
+look, start writing the bytes,
 
 27
 00:01:20.375 --> 00:01:22.375
-Copying these bytes to right here.
+Start copying these bytes to right here.
 
 28
 00:01:22.375 --> 00:01:26.887
@@ -150,7 +150,7 @@ copy from the source to the destination.
 
 32
 00:01:41.419 --> 00:01:44.242
-So very similarly to the right function,
+So very similarly to the write function,
 this is once again,
 
 33
@@ -319,7 +319,7 @@ it's going to take our original string,
 68
 00:03:17.768 --> 00:03:22.219
 which now has /blog/ guaranteed whether or
-not there was a slash there original.
+not there was a slash in the original.
 
 69
 00:03:22.219 --> 00:03:24.659
@@ -347,7 +347,7 @@ This is no longer a valid HTTP request.
 
 74
 00:03:36.549 --> 00:03:39.632
-We've just slammed this blog /index.html.
+We've just slammed this /blog/index.html.
 
 75
 00:03:39.632 --> 00:03:42.014
@@ -356,7 +356,7 @@ Right into the middle of this thing.
 76
 00:03:42.014 --> 00:03:45.545
 And then what we're gonna do is
-return the the initial address there.
+return the initial address there.
 
 77
 00:03:45.545 --> 00:03:50.705
@@ -365,8 +365,8 @@ like a little bit nicer is we can actually
 
 78
 00:03:50.705 --> 00:03:56.036
-define a variable here called like default
-file, which is gonna be index.html.
+define a variable here called like default_file,
+which is gonna be index.html.
 
 79
 00:03:56.036 --> 00:03:59.303
@@ -380,7 +380,7 @@ because we want the null terminator.
 
 81
 00:04:02.269 --> 00:04:06.234
-And we can do the strlen default file +1
+And we can do the strlen default_file + 1
 with the understanding that since this
 
 82
@@ -428,8 +428,8 @@ bring it up to the top and
 
 91
 00:04:29.899 --> 00:04:32.493
-say const char star
-default file equals voila.
+say const char *default_file 
+equals blah, blah.
 
 92
 00:04:32.493 --> 00:04:37.083
@@ -541,7 +541,7 @@ So in other words.
 115
 00:05:40.732 --> 00:05:45.734
 Let's suppose I'm doing this memcopy and
-I'm copying into an X509 email right here.
+I'm copying the index.html right here.
 
 116
 00:05:45.734 --> 00:05:49.396
@@ -619,8 +619,8 @@ it's not what I would do in most
 
 132
 00:06:28.569 --> 00:06:32.181
-program language is even though in
-c it is like a defensible choice.
+programming languages is even though in
+C it is like a defensible choice.
 
 133
 00:06:32.181 --> 00:06:35.454
@@ -660,7 +660,7 @@ then here's the number of bytes.
 140
 00:06:57.521 --> 00:07:00.638
 If that number of bytes writes off the end
-of the string, c does not care at all.
+of the string, C does not care at all.
 
 141
 00:07:00.638 --> 00:07:03.032

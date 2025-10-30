@@ -11,10 +11,10 @@ And then three I can call read passing that buffer and then it'll just read that
 So a struct, you can kind of think about it like an object in other languages, but a very, very bare bones, very, very minimal object. Really what a struct is in C is, it's maybe more similar to imagine if you just had all these variables one after the other and they were all just contiguously stored back to back in memory.
 
 [00:01:05]
-They're not quite contiguous. There's this thing called alignment padding, but we're not gonna get into alignment in this workshop. But the basic idea here is that there's no extra metadata here at all. So in some languages you can do stuff like, I can iterate over all the fields and they'll give them the strings.
+They're not quite contiguous. There's this thing called alignment padding, but we're not gonna get into alignment in this workshop. But the basic idea here is that there's no extra metadata here at all. So in some languages you can do stuff like, I can iterate over all the fields and they'll give them as strings.
 
 [00:01:20]
-These strings are gone, C is I don't know, forget about that, we're just throwing those out the window. These are just conveniences for the programmer so that it knows that this string means get the first one and this string means get the second one. So if you say start.mode_t, it's, that means get the memory at this offset.
+These strings are gone, C is I don't know, forget about that, we're just throwing those out the window. These are just conveniences for the programmer so that it knows that this string means get the first one and this string means get the second one. So if you say stat.mode_t, it's, that means get the memory at this offset.
 
 [00:01:36]
 So this is all just one big contiguous chunk of bytes. And in fact, if you wanted to you could try to get access to these different fields on this struct by just taking the memory address of your particular stat instance and just doing the same thing we've been doing with these arrays.
@@ -26,7 +26,7 @@ Just like +5, +6, whatever, just add to it and just read the memory at that addr
 So it's essentially a convenience for what we're doing. Now we're gonna call this C function in a second, that's going to give us back a stat instance. So it's basically gonna give us one of these values. And then what we're gonna do is we're gonna get the thing that we care about, which is this, st_size, which is the total size in bytes of the file.
 
 [00:02:41]
-Now you might notice the entire struct stat is way more information than just the total size in bytes. This is 144 bytes worth of data, and it's got all sorts of stuff like the inode number, in case you hear that, the user ID of the owner, the group ID, the device ID, last access time, last modification time, all this stuff.
+Now you might notice the entire struct stat is way more information than just the total size in bytes. This is 144 bytes worth of data, and it's got all sorts of stuff like the inode number, in case you need that, the user ID of the owner, the group ID, the device ID, last access time, last modification time, all this stuff.
 
 [00:02:58]
 There's all this information about the metadata of the file. And when we do this one function call, it just gives us back that one thing, this whole struct even though all we care about is just this one thing. So here's how we're gonna do that. We're gonna say struct stat metadata.
@@ -35,7 +35,7 @@ There's all this information about the metadata of the file. And when we do this
 The struct keyword is essentially kind of int or char or something like that, except that it's saying this isn't one of the built-in types, this is actually a user-defined struct type. And then the next thing you say is the name of the struct. So struct followed by stat.
 
 [00:03:32]
-So stat is the name of the struct that this is gonna be. And we say metadata, once again, we are actually not initializing this memory. So we're not doing an equals. You remember previously, we said, I wanna make this buffer, and I said, (100); which basically means I want you to reserve, this is gonna be an address, and I want you to reserve that many bytes, 100 bytes of memory.
+So stat is the name of the struct that this is gonna be. And we say metadata, once again, we are actually not initializing this memory. So we're not doing an equals. You remember previously, we said, I wanna make this buffer, and I said, [100]; which basically means I want you to reserve, this is gonna be an address, and I want you to reserve that many bytes, 100 bytes of memory.
 
 [00:03:55]
 Don't put other stuff in there, because I'm gonna write into this. This is exactly the same thing, except instead of 100 bytes its the 144 bytes that this thing takes up automatically. So the compiler is gonna take care of that for you. But basically, when you get to this program, if you were to look at the assembly language, basically what it's gonna be doing is saying, essentially, reserve 144 bytes worth of stuff, and then just give me back the address to the beginning of that, and I'm gonna write into that.
@@ -44,7 +44,7 @@ Don't put other stuff in there, because I'm gonna write into this. This is exact
 And just like with read, essentially you call this function called fstat, which basically is fd, I'll talk about the ampersand in a second here, and then metadata. And it's basically gonna be, okay cool, give me the file descriptor, give me the address to write into, and it's just gonna go ahead and write 144 bytes into that memory that contains all of this metadata information about the file.
 
 [00:04:42]
-So after we have run this, now I can go look at my metadata thing and say, .this.that, get the values off of it. But until I've actually called that fstat, I have not populated this metadata thing, and this is just memory garbage. Again, I could say metadata., whatever, st_rdev, whatever, and that's just gonna give me back a couple of bytes of memory garbage, whatever happens to be a memory until I've actually called fstat on it.
+So after we have run this, now I can go look at my metadata thing and say, .this, .that, get the values off of it. But until I've actually called that fstat, I have not populated this metadata thing, and this is just memory garbage. Again, I could say metadata., whatever, st_rdev, whatever, and that's just gonna give me back a couple of bytes of memory garbage, whatever happens to be a memory until I've actually called fstat on it.
 
 [00:05:06]
 Once again, it returns -1 if it fails. So once again, this is where we do the error handling. This time I did a little, because we're actually not using the output of fstat at all, the return value is only used for error handling, which is also a common thing we see in C.
@@ -83,5 +83,5 @@ We know how much memory to reserve, so that when we do our read, we're actually 
 Not quite. [LAUGH] It's a little bit of an extra dance, a little bit of a stomping over memory with other memory, uninitialized memory, that kind of stuff. But the reason we're going through this process is just to give you a sense of this is how things are done in C.
 
 [00:08:27]
-And also worth noting, this is also quite efficient, and when we get to the section on heat memory, we can see how the thing that's more convenient is in many ways less efficient than doing it this way.
+And also worth noting, this is also quite efficient, and when we get to the section on heap memory, we can see how the thing that's more convenient is in many ways less efficient than doing it this way.
 

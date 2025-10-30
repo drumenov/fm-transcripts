@@ -17,7 +17,7 @@ actually work, we need to be reading these
 
 4
 00:00:08.528 --> 00:00:11.672
-index dot HTML files off of the disk in
+index.html files off of the disk in
 order to send them back to the browser.
 
 5
@@ -126,7 +126,7 @@ giving it this flag that says Read only.
 27
 00:01:13.636 --> 00:01:17.895
 This is just a constant that's available
-for the standard library that basically
+from the standard library that basically
 
 28
 00:01:17.895 --> 00:01:20.560
@@ -173,7 +173,7 @@ this also is another integer [LAUGH].
 37
 00:01:41.138 --> 00:01:45.266
 So this flag of whether it's read only or
-rewrite, etc,
+reed/write, etc,
 
 38
 00:01:45.266 --> 00:01:48.111
@@ -606,7 +606,7 @@ descriptor that you already opened.
 
 129
 00:06:17.708 --> 00:06:19.921
-So this is gonna be our example dot txt.
+So this is gonna be our example.txt.
 
 130
 00:06:19.921 --> 00:06:23.108

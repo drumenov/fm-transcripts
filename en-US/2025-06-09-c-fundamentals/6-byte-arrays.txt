@@ -1,5 +1,5 @@
 [00:00:00]
->> Richard Feldman: So if we go back and apply this concept to Hello, World, one of the things that might surprise you is that when we're doing this write call, and we're passing in 1, that was actually a 32-bit integer. So that was 32 ones and zeros, which was to say, the bottom one that we had on the previous slide.
+>> Richard Feldman: So if we go back and apply this concept to Hello World, one of the things that might surprise you is that when we're doing this write call, and we're passing in 1, that was actually a 32-bit integer. So that was 32 ones and zeros, which was to say, the bottom one that we had on the previous slide.
 
 [00:00:17]
 That basically means that if you want to, you can specify up to 2 to the 32 different numbers in that. And that gets you up to things like 4 billion or something like that. Is the highest number you can express in a 32-bit integer. If you wanna go higher than that, you would need to actually reserve more bits in memory.
@@ -29,7 +29,7 @@ Original ASCII did use, in fact, 1-byte per character. And actually, fortunately
 Now, as it turns out, American English is not all the languages in the world. There's actually others. And so yeah, this is where we got Unicode. And fortunately, there was this really, really clever encoding. And it's required that if you ever introduce someone to the concept of UTF-8, you have to explain how clever this is.
 
 [00:03:05]
-But they managed to mix an encoding that was backwards and compatible with ASCII, which is basically if we were to look at Unicode characters here, this stuff that we have right here, this is both ASCII and valid UTF-8. Because UTF-8 cleverly said for all of the first 256 characters that we support in UTF-8, we're gonna choose to have them be exactly the same as ASCII.
+But they managed to mix an encoding that was backwards compatible with ASCII, which is basically if we were to look at Unicode characters here, this stuff that we have right here, this is both ASCII and valid UTF-8. Because UTF-8 cleverly said for all of the first 256 characters that we support in UTF-8, we're gonna choose to have them be exactly the same as ASCII.
 
 [00:03:28]
 So UTF-8 is totally backwards compatible with ASCII. If you have some program that was using ASCII for its strings in the 1970s and you decide to upgrade UTF-8, all of that code will still just completely work as is, because UTF-8 represents those strings exactly the same way in memory.

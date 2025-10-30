@@ -142,8 +142,8 @@ implications of that, and like,
 
 30
 00:01:23.853 --> 00:01:26.845
-considering we want to use malloc are
-going to use chunked reads and yada yada.
+considering whether we want to use malloc, are
+we going to use chunked reads and yada yada.
 
 31
 00:01:26.845 --> 00:01:29.086
@@ -261,7 +261,7 @@ our file that we've opened, and
 54
 00:02:37.486 --> 00:02:41.604
 then send them right over to the socket
-for the file descriptor as a destination.
+file descriptor as a destination.
 
 55
 00:02:41.604 --> 00:02:45.597
@@ -309,7 +309,7 @@ can have a sendfile work.
 64
 00:03:07.555 --> 00:03:10.138
 This one returns an int
-instead of a size_t.
+instead of a ssize_t.
 
 65
 00:03:10.138 --> 00:03:12.849
@@ -332,12 +332,12 @@ it takes like a length instead of like.
 
 69
 00:03:19.925 --> 00:03:22.894
-Being a size t, it's an off t address.
+Being a size_t, it's an off_t address.
 
 70
 00:03:22.894 --> 00:03:26.773
-And then we have this sf-hdtr,
-which is a sure, and
+And then we have this sf_hdtr,
+which is a hdtr, and
 
 71
 00:03:26.773 --> 00:03:31.456
@@ -400,7 +400,7 @@ sendfile.
 83
 00:04:06.806 --> 00:04:10.277
 You notice that like the pound
-include here is sys/stenfile.h.
+include here is sys/sendfile.h.
 
 84
 00:04:10.277 --> 00:04:12.911
@@ -481,7 +481,7 @@ but they can be.
 100
 00:04:59.100 --> 00:05:01.166
 And this is a case where
-they target totally are.
+they totally are.
 
 101
 00:05:01.166 --> 00:05:03.946
@@ -565,8 +565,8 @@ as we're just like, did anyone define that
 
 118
 00:05:52.177 --> 00:05:55.306
-in any was there a pound define
-at a point, at any point of this?
+in any... Was there a pound define
+at some point, at any point of this?
 
 119
 00:05:55.306 --> 00:05:59.014
@@ -639,8 +639,8 @@ done the include there.
 
 133
 00:06:42.509 --> 00:06:46.868
-Basically, we say elif Linux, we have
-Selenix specific code, and then elif,
+Basically, we say #ifdef linux, we have
+Linux specific code, and then elif,
 
 134
 00:06:46.868 --> 00:06:49.732
@@ -659,7 +659,7 @@ the language at compile time.
 
 137
 00:06:54.258 --> 00:06:57.313
-We're not gonna have if,def, and
+We're not gonna have ifdef, and
 elif, and endif, and define.
 
 138
@@ -714,7 +714,7 @@ want to do this error, we could just say
 148
 00:07:26.570 --> 00:07:29.530
 like, well, this is the part where
-rather than using send file at all.
+rather than using sendfile at all.
 
 149
 00:07:29.530 --> 00:07:32.654
@@ -734,7 +734,7 @@ at least it'll still work if we're
 152
 00:07:38.814 --> 00:07:42.412
 targeting something other than Linux or
-OS, such as windows.
+Mac OS, such as Windows.
 
 153
 00:07:42.412 --> 00:07:46.284
@@ -785,7 +785,7 @@ we're gonna do a read, okay,
 
 163
 00:08:12.769 --> 00:08:14.938
-if def windows do it the windows way.
+#ifdef Windows do it the Windows way.
 
 164
 00:08:14.938 --> 00:08:17.085
@@ -793,8 +793,8 @@ Otherwise do it, this way.
 
 165
 00:08:17.085 --> 00:08:20.758
-If we wanna do it open, okay, ifdef
-windows do it this way, otherwise, that.
+If we wanna do an open, okay, #ifdef
+Windows do it this way, otherwise, that.
 
 166
 00:08:20.758 --> 00:08:24.245
@@ -813,7 +813,7 @@ of like how much of an effect it would
 169
 00:08:28.420 --> 00:08:32.001
 have on your program other than sort
-of littering these if-ifs everywhere.
+of littering these ifdefs everywhere.
 
 170
 00:08:32.001 --> 00:08:33.952
@@ -862,7 +862,7 @@ cross-platform is a common reason to want
 
 179
 00:09:00.198 --> 00:09:02.028
-to read for something like that.
+to reach for something like that.
 
 180
 00:09:02.028 --> 00:09:04.601
@@ -936,7 +936,7 @@ to access platform specific code,
 
 194
 00:09:47.232 --> 00:09:48.243
-because with send file.
+because with sendfile.
 
 195
 00:09:48.243 --> 00:09:53.669

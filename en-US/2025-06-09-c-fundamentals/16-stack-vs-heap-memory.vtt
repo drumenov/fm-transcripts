@@ -11,7 +11,7 @@ we've got our struct stat metadata.
 
 3
 00:00:03.725 --> 00:00:07.075
-We're calling fstat and
+We're calling fstat on
 the file descriptor, metadata address.
 
 4
@@ -30,8 +30,8 @@ my metadata populated,
 
 7
 00:00:13.954 --> 00:00:18.846
-instead of saying char buffer bracket 100,
-I can say char buffer metadata.st_size.
+instead of saying char buffer[100],
+I can say char buffer[metadata.st_size].
 
 8
 00:00:18.846 --> 00:00:21.513
@@ -310,7 +310,7 @@ bytes I actually read.
 
 65
 00:03:17.609 --> 00:03:21.616
-Now, I think that can also happen is,
+Now, a think that can also happen is,
 yeah, it can potentially say, look,
 
 66
@@ -334,7 +334,7 @@ file in a single read call.
 
 70
 00:03:34.927 --> 00:03:38.090
-Nock was like, nah, nah, nah,
+MacOS was like, nah, nah, nah,
 that's too many gigabytes,
 
 71
@@ -506,7 +506,7 @@ dealing with stack memory.
 
 105
 00:05:28.077 --> 00:05:31.176
-We do need to grant to deal with
+We do need to, granted, deal with
 the complexity of reading in chunks, but
 
 106
@@ -534,7 +534,7 @@ very important.
 
 111
 00:05:43.103 --> 00:05:46.794
-Getting its size by using the Fstat,
+Getting its size by using the fstat,
 and then we talked about structs and
 
 112
@@ -559,7 +559,7 @@ theoretically, to do a malloc so
 
 116
 00:05:59.505 --> 00:06:02.855
-we can just skip the exact size, and
+we can just get the exact size, and
 not worry about overflowing the stack.
 
 117
@@ -584,7 +584,7 @@ about managing lifetimes,
 
 121
 00:06:14.774 --> 00:06:15.827
-remember when you call free.
+remembering when to call free.
 
 122
 00:06:15.827 --> 00:06:19.317
@@ -835,7 +835,7 @@ how do I explain this concisely?
 174
 00:08:46.129 --> 00:08:50.024
 So I guess it would be like,
-if inside of two path we passed a third
+if inside of to_path we passed a third
 
 175
 00:08:50.024 --> 00:08:53.199

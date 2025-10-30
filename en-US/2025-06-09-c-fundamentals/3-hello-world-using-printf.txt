@@ -35,7 +35,7 @@ Non zero generally means something went wrong, and then there's not really a ton
 But for learning purposes, I wanted to start with that cuz it's a little bit simpler. The other thing that we can do to improve the ergonomics of this is, instead of using this write function, we can use a wrapper around write called printf. And printf, as we will see later, the main reason that people use it, so this is print formatted, the f is for formatted.
 
 [00:03:20]
-Again, normally we would probably see some camel case or some snake case [LAUGH] in these names, but this is C, 1972, they just went print, just stick an f on the end. It's the formatted version of print, really minimizing your teletype ink. And basically, this just takes the string.
+Again, normally we would probably see some camel case or some snake case [LAUGH] in these names, but this is C, 1972, they just went printf, just stick an f on the end. It's the formatted version of print, really minimizing your teletype ink. And basically, this just takes the string.
 
 [00:03:35]
 And as previously mentioned, this will do things like automatically calculating the length of the string and automatically writing to standard out. So you don't have to say one for standard out and 13 for the length of the string, printf will just take care of that for you. Also, as we will see later in the course, printf has additional features that let you do some basic string interpolation type things.
@@ -44,7 +44,7 @@ And as previously mentioned, this will do things like automatically calculating 
 So if you wanted to like print a string in the middle of this without having to concatenate it together ahead of time, printf also lets you do that. You can also print numbers in here and it'll convert them to strings for you, things like that. So we're gonna use printf quite a bit more throughout the course of the course.
 
 [00:04:05]
-But in terms of getting as close to the middle as possible, printf is just a convenience wrapper around write. Instead of coming from unisted, it comes from stdio, which is for standard input output. So usually, when you see a C Hello World example, they will show you this.
+But in terms of getting as close to the metal as possible, printf is just a convenience wrapper around write. Instead of coming from unistd, it comes from stdio, which is for standard input output. So usually, when you see a C Hello World example, they will show you this.
 
 [00:04:22]
 This is almost exactly what you will see for C Hello World. It's like, int main, return 0, printf. But I did wanna go over, this is the actual closest to the metal version you can get without getting into operating system land. Okay, yeah, the F is for formatted, and formatted meaning, it supports the things like, if you wanna interpolate a string in there or a number or something like that.

@@ -82,13 +82,13 @@ didn't end in like a file extension,
 
 18
 00:00:47.928 --> 00:00:50.436
-it doesn't have like A in it,
+it doesn't have like "." in it,
 we're gonna assume, yeah,
 
 19
 00:00:50.436 --> 00:00:53.271
 that's basically means they want
-blog slash index, dot, HTML.
+blog/index.html.
 
 20
 00:00:53.271 --> 00:00:56.397
@@ -185,7 +185,7 @@ in C than it would be in certain other
 39
 00:01:48.717 --> 00:01:52.023
 languages where writing a function
-like two path very straightforward.
+like to_path very straightforward.
 
 40
 00:01:52.023 --> 00:01:55.141
@@ -204,8 +204,8 @@ this.
 
 43
 00:01:59.864 --> 00:02:04.206
-This char star is going to sorry to
-path is going to return a char star.
+This char star is going to sorry, this
+to_path is going to return a char star.
 
 44
 00:02:04.206 --> 00:02:08.714
@@ -220,22 +220,22 @@ path, once we've finished extracting
 46
 00:02:13.436 --> 00:02:17.604
 the path from the request and adding
-the index dot HTML to the end of it.
+the index.html to the end of it.
 
 47
 00:02:17.604 --> 00:02:21.403
-Now, in normalcy, if you do this, like
+Now, in normal C, if you do this, like
 if you You just write this code exactly
 
 48
 00:02:21.403 --> 00:02:23.878
 as is,
-you're giving it an error that says, hey,
+you're gonna get an error that says, hey,
 
 49
 00:02:23.878 --> 00:02:27.523
 you're trying to call this function
-called to path before it was defined.
+called to_path before it was defined.
 
 50
 00:02:27.523 --> 00:02:28.906
@@ -263,7 +263,7 @@ actually going to call it.
 
 55
 00:02:40.481 --> 00:02:42.663
-And this sort of lets see, know,
+And this sort of lets C know,
 as it's like coming through and
 
 56
@@ -305,7 +305,7 @@ that, or you can just simplify things and
 64
 00:02:57.488 --> 00:03:00.350
 just move the function up and
-define it before me and.
+define it before main.
 
 65
 00:03:00.350 --> 00:03:03.261
@@ -409,12 +409,12 @@ It could be a put.
 
 86
 00:03:59.311 --> 00:03:59.992
-We want to find this space.
+We want to find this space
 
 87
 00:03:59.992 --> 00:04:03.882
-Phase because that let us know that
-we've moved past http verb and
+because that lets us know that
+we've moved past the http verb and
 
 88
 00:04:03.882 --> 00:04:07.854
@@ -477,7 +477,7 @@ loop later, [LAUGH] But for
 
 100
 00:04:43.716 --> 00:04:45.518
-now we're just gonna do it wild style.
+now we're just gonna do it while style.
 
 101
 00:04:45.518 --> 00:04:48.238
@@ -830,7 +830,7 @@ like prettier and stuff,
 176
 00:08:21.765 --> 00:08:24.151
 are not actually that
-common in the c world.
+common in the C world.
 
 177
 00:08:24.151 --> 00:08:27.608
@@ -878,7 +878,7 @@ was part of the conditional.
 
 186
 00:08:52.689 --> 00:08:54.351
-And that was the source of the book.
+And that was the source of the bug.
 
 187
 00:08:54.351 --> 00:08:57.037
@@ -922,7 +922,7 @@ that's, this is what that looks like.
 195
 00:09:17.937 --> 00:09:20.017
 So for
-loops essentially have three in green.
+loops essentially have three ingredients.
 
 196
 00:09:20.017 --> 00:09:24.319
@@ -1017,8 +1017,8 @@ So this thing right here,
 
 216
 00:10:04.680 --> 00:10:07.877
-just des sugars to exactly the same
-thing we had in the wild loop.
+just desugars to exactly the same
+thing we had in the while loop.
 
 217
 00:10:07.877 --> 00:10:09.824
@@ -1058,11 +1058,11 @@ that we can have it in scope later on.
 224
 00:10:36.952 --> 00:10:41.177
 Because the next thing
-we want to do after we.
+we want to do after we increment start
 
 225
 00:10:41.177 --> 00:10:44.364
-To get to right here is we want to say,
+to get to right here is we want to say,
 well, let's throw that space away.
 
 226
@@ -1101,12 +1101,12 @@ well that memory address is right here.
 233
 00:11:05.337 --> 00:11:08.858
 So, if we literally say printf start,
-and then present S start,
+and then %s, start,
 
 234
 00:11:08.858 --> 00:11:13.351
 what's gonna get printed out to the screen
-is start and then slash blog [INAUDIBLE].
+is start and then /blog HTTP blah, blah.
 
 235
 00:11:13.351 --> 00:11:15.557
@@ -1144,11 +1144,11 @@ it's gonna be, yeah, Okay, no problem.
 
 242
 00:11:40.699 --> 00:11:41.666
-There's, an alternator.
+There's a null terminator,
 
 243
 00:11:41.666 --> 00:11:42.345
-Like we encountered it.
+like, we encountered it.
 
 244
 00:11:42.345 --> 00:11:43.825
@@ -1208,7 +1208,7 @@ are space separated.
 256
 00:12:14.941 --> 00:12:20.240
 So right now we're just trying to
-isolate this slash blog right in here.
+isolate this /blog right in here.
 
 257
 00:12:20.240 --> 00:12:24.587
@@ -1241,7 +1241,7 @@ by the way, if along the way.
 
 263
 00:12:39.889 --> 00:12:41.904
-We happen to encounter a null bite,
+We happen to encounter a null byte,
 
 264
 00:12:41.904 --> 00:12:44.736
@@ -1325,8 +1325,8 @@ basically say, if that is a slash.
 
 281
 00:13:31.559 --> 00:13:35.288
-In other words, if it was a get of slash,
-blog slash, then in that case,
+In other words, if it was a GET
+/blog/, then in that case,
 
 282
 00:13:35.288 --> 00:13:37.324
@@ -1335,7 +1335,7 @@ we're going to subtract one from end.
 283
 00:13:37.324 --> 00:13:40.865
 So this is basically a way
-of handling in a, very see,
+of handling in a, very C
 
 284
 00:13:40.865 --> 00:13:43.005
@@ -1368,7 +1368,7 @@ that space right there,
 290
 00:13:57.705 --> 00:14:02.213
 then we're just going to move it back one,
-so that it ends up being Them right there.
+so that it ends up being right there.
 
 291
 00:14:02.213 --> 00:14:06.487
@@ -1417,7 +1417,7 @@ might look at this function signature and
 
 300
 00:14:32.515 --> 00:14:36.725
-say like, two path takes a request,
+say like, to_path takes a request,
 and then it returns the path from it.
 
 301
@@ -1428,7 +1428,7 @@ not gonna touch that request.
 302
 00:14:39.361 --> 00:14:41.679
 We're just gonna look at it and
-we're gonna make a nice new And
+we're gonna make a nice new path and
 
 303
 00:14:41.679 --> 00:14:43.075
@@ -1465,7 +1465,7 @@ it's fair game.
 
 310
 00:15:01.205 --> 00:15:04.438
-I can write to it if I want to, To,
+I can write to it if I want to,
 I can mutate it in place if I want to, and
 
 311

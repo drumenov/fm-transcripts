@@ -8,7 +8,7 @@ well, hey,
 2
 00:00:02.394 --> 00:00:05.105
 how come fstat doesn't just
-return the stack stat struct?
+return the stat struct?
 
 3
 00:00:05.105 --> 00:00:09.716
@@ -326,7 +326,7 @@ functions would leak memory.
 68
 00:03:40.328 --> 00:03:43.698
 [LAUGH] Unless you
-explicitly freeze stuff.
+explicitly freed stuff.
 
 69
 00:03:43.698 --> 00:03:48.018
@@ -335,7 +335,7 @@ unsafe and also totally allowed,
 
 70
 00:03:48.018 --> 00:03:52.844
-at least the C, to return addresses that
+at least in C, to return addresses that
 are defined inside the function body.
 
 71
@@ -424,7 +424,7 @@ they want into that memory.
 88
 00:04:50.327 --> 00:04:53.841
 Anytime you call another function,
-it's free to stop all over it, and
+it's free to stomp all over it, and
 
 89
 00:04:53.841 --> 00:04:57.372
@@ -482,7 +482,7 @@ that memory was fair game.
 100
 00:05:32.836 --> 00:05:37.021
 You may recall that when we had this
-function to path that we wrote in
+function to_path that we wrote in
 
 101
 00:05:37.021 --> 00:05:41.224
@@ -638,11 +638,11 @@ why we did that in that way.
 132
 00:07:26.053 --> 00:07:28.465
 Cool, yeah, so this is an address
-into an arguments, memory,
+into an argument's memory,
 
 133
 00:07:28.465 --> 00:07:29.908
-not into a local variables, memory.
+not into a local variable's memory.
 
 134
 00:07:29.908 --> 00:07:32.051
@@ -733,7 +733,7 @@ did in the previous section,
 152
 00:08:25.641 --> 00:08:28.552
 where we stopping over some
-memory that does need to be used.
+memory that doesn't need to be used.
 
 153
 00:08:28.552 --> 00:08:31.924
@@ -742,7 +742,7 @@ programs that are believe it or not,
 
 154
 00:08:31.924 --> 00:08:35.432
-less error-prone andin many cases and
+less error-prone in many cases and
 also run faster as a bonus.
 
 155
@@ -788,7 +788,7 @@ stomped over when the function ends.
 163
 00:08:58.739 --> 00:09:02.237
 And when you call malloc, it's gonna
-return Return and address that memory,
+return return an address to that memory,
 
 164
 00:09:02.237 --> 00:09:05.319
@@ -1068,7 +1068,7 @@ the second free called malloc.
 
 223
 00:11:43.722 --> 00:11:47.242
-It's entirely possible that Malik gave out
+It's entirely possible that malloc gave out
 that same address from earlier again and
 
 224
@@ -1132,7 +1132,7 @@ used and you're like, no,
 
 237
 00:12:15.671 --> 00:12:16.947
-I'm calling mallocing, right?
+I'm calling malloc, right?
 
 238
 00:12:16.947 --> 00:12:17.587
@@ -1153,7 +1153,7 @@ And the problem actually,
 242
 00:12:20.963 --> 00:12:23.947
 is that some totally unrelated code was
-holding on to an address and freed it.
+holding on to that address and freed it.
 
 243
 00:12:23.947 --> 00:12:24.684

@@ -21,7 +21,7 @@ So this being a static http server,
 5
 00:00:11.882 --> 00:00:16.391
 we need to actually figure out based on
-the incoming requests file extension,
+the incoming request's file extension,
 
 6
 00:00:16.391 --> 00:00:20.306
@@ -326,8 +326,8 @@ thing for the CSS and text/css.
 
 69
 00:03:35.083 --> 00:03:39.333
-We do that, and then JS, application
-Javascript and HTML and text statement.
+We do that, and then JS, application/javascript
+and HTML, text/html.
 
 70
 00:03:39.333 --> 00:03:42.775
@@ -468,7 +468,7 @@ PNG, CSS, JS, and HTML.
 
 99
 00:05:06.001 --> 00:05:08.941
-So here are the bites
+So here are the bytes
 that correspond to HTML.
 
 100
@@ -1457,12 +1457,12 @@ then l is gonna be next after that.
 
 308
 00:15:46.559 --> 00:15:49.413
-And then if we call to int on that,
+And then if we call to_int on that,
 it's going to actually, sorry,
 
 309
 00:15:49.413 --> 00:15:52.921
-we could write a function called to int,
+we could write a function called to_int,
 which we can call, passing these things,
 
 310
@@ -1490,7 +1490,7 @@ this horrendous, hard coded number,
 
 315
 00:16:08.246 --> 00:16:13.146
-we'd like to be able to call to int and
+we'd like to be able to call to_int and
 just say, look png/0 HTML, yada yada.
 
 316

@@ -26,7 +26,7 @@ index.html file, actually two of them.
 6
 00:00:17.706 --> 00:00:22.375
 So it says index.html contents and
-then blah blog/index.html contents.
+then blog/index.html contents.
 
 7
 00:00:22.375 --> 00:00:24.580
@@ -44,7 +44,7 @@ So there's this index.html.
 10
 00:00:28.117 --> 00:00:31.357
 This is like, in addition to the all the
-dot c files, and it looks like this says,
+.c files, and it looks like this says,
 
 11
 00:00:31.357 --> 00:00:32.225
@@ -52,7 +52,7 @@ like, Hello World.
 
 12
 00:00:32.225 --> 00:00:34.572
-This through slash page.
+This is the root slash page.
 
 13
 00:00:34.572 --> 00:00:36.930
@@ -106,7 +106,7 @@ Let's take a look at what this is doing.
 
 24
 00:01:04.518 --> 00:01:07.719
-So this part right here, this two path,
+So this part right here, this to_path,
 this is gonna look familiar.
 
 25
@@ -186,16 +186,16 @@ we've chosen not to handle any errors.
 41
 00:01:49.417 --> 00:01:52.684
 And here we say, change this
-charge star to and malloc, sorry.
+char star and malloc, sorry.
 
 42
 00:01:52.684 --> 00:01:54.266
-Change this to charge star and malloc.
+Change this to char star and malloc.
 
 43
 00:01:54.266 --> 00:01:57.493
 So right now,
-this is allocating metadata, st_size + 1,
+this is allocating metadata.st_size + 1,
 
 44
 00:01:57.493 --> 00:02:00.107
@@ -237,7 +237,7 @@ sure not to use use after free.
 
 52
 00:02:19.790 --> 00:02:21.318
-Freeze, or double freeze,
+or double free,
 or anything like that.
 
 53
@@ -266,11 +266,11 @@ for these different functions,
 
 58
 00:02:38.792 --> 00:02:39.680
-this is like you.
+this is like
 
 59
 00:02:39.680 --> 00:02:42.712
-A little bit of a your first taste of,
+a little bit of a your first taste of,
 like, C documentation.
 
 60
@@ -392,7 +392,7 @@ these on the web and just like open and
 84
 00:04:05.805 --> 00:04:09.218
 then like maybe Linux or something like
-that, or even just like open and then see,
+that, or even just like open and then C,
 
 85
 00:04:09.218 --> 00:04:11.361
@@ -451,11 +451,11 @@ This is the pathname to open.
 97
 00:04:38.321 --> 00:04:41.198
 So this is a char star,
-so terminated string int.
+so null terminated string, int,
 
 98
 00:04:41.198 --> 00:04:42.187
-We know about that one.
+we know about that one.
 
 99
 00:04:42.187 --> 00:04:42.798
@@ -468,7 +468,7 @@ like the read only flag that we put there,
 
 101
 00:04:45.859 --> 00:04:48.053
-the dot dot dot basically means Varg.
+the "..." basically means vararg.
 
 102
 00:04:48.053 --> 00:04:51.037
@@ -511,7 +511,7 @@ how you want to open the file.
 110
 00:05:13.210 --> 00:05:16.320
 Then there's other functions like create
-and open app and open app two and
+and openat and openat2 and
 
 111
 00:05:16.320 --> 00:05:17.084
@@ -693,7 +693,7 @@ I don't see what all the fuss is about.
 
 150
 00:07:08.338 --> 00:07:10.403
-That was no proble,
+That was no problem,
 we just added a little free in there.
 
 151
@@ -751,7 +751,7 @@ also fail sorry, fstat.
 
 162
 00:07:47.156 --> 00:07:50.631
-So gonna say, if this is w = -1 here,
+So gonna say, if this is == -1 here,
 we're not bothering to introduce
 
 163
@@ -769,19 +769,19 @@ Okay, all right.
 
 166
 00:07:58.970 --> 00:08:02.610
-And read, okay, where is read there.
+And read, okay, where is read? There
 
 167
 00:08:02.610 --> 00:08:03.608
-It is great.
+it is, great.
 
 168
 00:08:03.608 --> 00:08:08.525
-And now I can just say if bytes_read w =
+And now I can just say if bytes_read == -1
 
 169
 00:08:08.525 --> 00:08:13.592
--1 return and malloc, or is that one?
+return and malloc, or is that one?
 
 170
 00:08:13.592 --> 00:08:15.524
@@ -790,7 +790,7 @@ We already did malloc, right?
 171
 00:08:15.524 --> 00:08:18.193
 Yeah, great, okay, yeah,
-we can print of that an error handle, but
+we can printf that an error happened, but
 
 172
 00:08:18.193 --> 00:08:19.207
@@ -849,7 +849,8 @@ We freed that.
 
 184
 00:08:51.605 --> 00:08:53.775
-We didn't forget very good.
+We didn't forget, very good.
+What if bytes_read was -1? Did we free it? Nope...
 
 185
 00:08:53.775 --> 00:08:57.880
@@ -900,7 +901,7 @@ Do we always close the file?
 196
 00:09:23.170 --> 00:09:26.258
 &gt;&gt; Richard Feldman: Nope, [LAUGH] yeah,
-what if bites red was negative one?
+what if bytes_read was negative one?
 
 197
 00:09:26.258 --> 00:09:27.105
@@ -955,7 +956,7 @@ close the file descriptor because this is
 
 208
 00:09:47.691 --> 00:09:50.559
-for equals one which means that
+for equals -1 which means that
 there was no file descriptor.
 
 209
@@ -1025,7 +1026,7 @@ in just the right spot.
 
 223
 00:10:21.110 --> 00:10:23.305
-And to free your malix
+And to free your mallocs
 in just the right spots.
 
 224
@@ -1059,7 +1060,7 @@ which is even worse than a use after free.
 230
 00:10:40.256 --> 00:10:43.183
 This is how C gets a reputation for
-its memory on safety,
+its memory unsafety,
 
 231
 00:10:43.183 --> 00:10:44.876
@@ -1072,13 +1073,12 @@ really cause problems.
 
 233
 00:10:48.047 --> 00:10:51.637
-Now one, right, you can go with this is
-you can go with rust, which basically,
+Now, one route you can go with this is
+you can go with Rust, which basically,
 
 234
 00:10:51.637 --> 00:10:53.790
-you don't have clothes entry in rust and
-rust.
+you don't have close and free in Rust.
 
 235
 00:10:53.790 --> 00:10:56.444
@@ -1093,7 +1093,7 @@ if you want to learn all about that,
 237
 00:11:00.001 --> 00:11:03.576
 I have a whole course on Rust that you
-can watch right here on Final Masters.
+can watch right here on Frontend Masters.
 
 238
 00:11:03.576 --> 00:11:06.843
@@ -1198,8 +1198,8 @@ that the sort of C successor languages
 
 259
 00:12:06.753 --> 00:12:09.323
-that are not in the like c++ or
-rust family.
+that are not in the like C++ or
+Rust family.
 
 260
 00:12:09.323 --> 00:12:12.636
@@ -1217,7 +1217,7 @@ that I'm just gonna make up syntactic
 
 263
 00:12:21.218 --> 00:12:25.690
-because c does not have this is you
+because C does not have this is you
 basically say something like this, defer.
 
 264
@@ -1227,7 +1227,7 @@ actually.
 
 265
 00:12:27.449 --> 00:12:29.466
-So C, if it's negative one,
+So see if it's negative one,
 if so early return.
 
 266
@@ -1282,7 +1282,7 @@ function then defer doesn't really help
 276
 00:13:00.027 --> 00:13:02.897
 you, whereas, like the things
-that rust does do help you.
+that Rust does do help you.
 
 277
 00:13:02.897 --> 00:13:06.777

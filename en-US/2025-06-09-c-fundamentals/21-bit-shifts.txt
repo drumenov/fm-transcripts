@@ -1,5 +1,5 @@
 [00:00:00]
->> Richard Feldman: So we've handled this case where we GET /blog or /blog/ with a slash after it. And now we're gonna need to do a little bit more work to start handling automatic file extensions. So this being a static http server, we need to actually figure out based on the incoming requests file extension, whether or not we should send a particular content type or another.
+>> Richard Feldman: So we've handled this case where we GET /blog or /blog/ with a slash after it. And now we're gonna need to do a little bit more work to start handling automatic file extensions. So this being a static http server, we need to actually figure out based on the incoming request's file extension, whether or not we should send a particular content type or another.
 
 [00:00:20]
 So for example, for a PNG, if we're getting a GET of a /blog.png, we want to make sure that not only do we open blog.png and send those bytes from the file system over, but we also wanna make sure that we're sending back a content type header that reflects this is a PNG.
@@ -35,7 +35,7 @@ And all of the bytes in between and the two null terminators were identical. And
 Now, this will actually run when we hope it would. We'll also say, great, this is gonna run if whatever extension, again, assuming that we've already parsed it out, is actually the bytes of that string or [LAUGH] the bytes PNG. Then we run this and set our content type to image/png and all is good.
 
 [00:03:30]
-And then of course we wanna do the same thing for the CSS and text/css. We do that, and then JS, application Javascript and HTML and text statement. We're gonna do a lot of strcmp calls here, which is a little bit unfortunate, because strcmp is running through every single byte in every single one of these, which means that the more file extensions that we support, the more we are walking through every single one of these.
+And then of course we wanna do the same thing for the CSS and text/css. We do that, and then JS, application/javascript and HTML, text/html. We're gonna do a lot of strcmp calls here, which is a little bit unfortunate, because strcmp is running through every single byte in every single one of these, which means that the more file extensions that we support, the more we are walking through every single one of these.
 
 [00:03:51]
 So in order to detect if this was HTML, we first had to go compare it to PNG and let that fail, and then compare it to CSS, let that fail. Each time we're marching through as much of this as we need to until they're different. It's kind of rough.
@@ -50,7 +50,7 @@ But this is not something I would normally expect for a static web server. I'm d
 But it is gonna be a lot faster, and the ergonomics are actually gonna be a little bit better in terms of the getting to actually use the switch statement. So here we go. We're gonna do a fancy trick now. [COUGH] Here are some of these file extensions we wanna support, PNG, CSS, JS, and HTML.
 
 [00:05:06]
-So here are the bites that correspond to HTML. So H is 104, T is 116, M is 109, L is 108. And here are the bits that go into HTML. So if we have an array of these four bytes, this is what the bit pattern looks like side by side.
+So here are the bytes that correspond to HTML. So H is 104, T is 116, M is 109, L is 108. And here are the bits that go into HTML. So if we have an array of these four bytes, this is what the bit pattern looks like side by side.
 
 [00:05:21]
 You may recall all the way back in part two, we talked about how we get to decide how we interpret memory. These ones and zeros, they are our ones and zeros. We can look at them however we want. In fact, if we want to, we can look at these four bytes as one gigantic, 32 bit integer, if we want.
@@ -158,10 +158,10 @@ And say, okay, we take this t and we bit shift it over by 8 and take the m over 
 If either one of them is one, then the resulting one is one. And so this effectively means that all of those bit shifts that are sort of adding all those zeros at the end sort of become harmless. Essentially, what this does is it causes us to end up with h, t, m and l in exactly the array like pattern that we want.
 
 [00:15:40]
-So h is gonna be first, and then t is gonna be next, m is gonna be next, then l is gonna be next after that. And then if we call to int on that, it's going to actually, sorry, we could write a function called to int, which we can call, passing these things, which will just do the bit shifts for us.
+So h is gonna be first, and then t is gonna be next, m is gonna be next, then l is gonna be next after that. And then if we call to_int on that, it's going to actually, sorry, we could write a function called to_int, which we can call, passing these things, which will just do the bit shifts for us.
 
 [00:15:54]
-And then what this will basically do is this will turn these things into an actual integer like we want. So then ideally we would like to be able to say, instead of const int png equals this horrendous, hard coded number, we'd like to be able to call to int and just say, look png/0 HTML, yada yada.
+And then what this will basically do is this will turn these things into an actual integer like we want. So then ideally we would like to be able to say, instead of const int png equals this horrendous, hard coded number, we'd like to be able to call to_int and just say, look png/0 HTML, yada yada.
 
 [00:16:13]
 This is much more readable than this, I think we can all agree. It's not quite as readable as a string literal, but I can clearly see, okay, this one's the PNG one, this one's the HTML one. It's a lot harder to make a mistake, or to detect that I've made a mistake than I have if I have these weird, hard-coded numbers here.

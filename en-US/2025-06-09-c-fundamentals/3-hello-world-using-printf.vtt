@@ -324,7 +324,7 @@ probably see some camel case or
 67
 00:03:23.238 --> 00:03:27.691
 some snake case [LAUGH] in these names,
-but this is C, 1972, they just went print,
+but this is C, 1972, they just went printf,
 
 68
 00:03:27.691 --> 00:03:29.043
@@ -396,7 +396,7 @@ more throughout the course of the course.
 82
 00:04:05.681 --> 00:04:09.454
 But in terms of getting as close
-to the middle as possible,
+to the metal as possible,
 
 83
 00:04:09.454 --> 00:04:12.853
@@ -405,7 +405,7 @@ wrapper around write.
 
 84
 00:04:12.853 --> 00:04:16.503
-Instead of coming from unisted,
+Instead of coming from unistd,
 it comes from stdio, which is for
 
 85

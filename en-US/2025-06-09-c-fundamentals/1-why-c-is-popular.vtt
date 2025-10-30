@@ -100,7 +100,7 @@ you in terms of performance is what I'm
 21
 00:01:05.098 --> 00:01:08.292
 gonna call the Local Static
-HTTP Server Perf Olympics.
+HTTP Server Performance Olympics.
 
 22
 00:01:08.292 --> 00:01:09.987
@@ -243,13 +243,13 @@ HTTP servers written in Rust.
 
 51
 00:02:39.602 --> 00:02:42.847
-Which has a reputation for Being a very
-fast language, and Node js, which,
+Which has a reputation for being a very
+fast language, and Node.js, which,
 
 52
 00:02:42.847 --> 00:02:44.937
 granted, has a lot more
-overhead than rust or C.
+overhead than Rust or C.
 
 53
 00:02:44.937 --> 00:02:49.679
@@ -289,7 +289,7 @@ and V8 is written in C++.
 60
 00:03:11.196 --> 00:03:15.130
 It's multiple millions of lines [LAUGH] of
-C++ code, and billions, it takes forever.
+C++ code, and building it takes forever.
 
 61
 00:03:15.130 --> 00:03:19.927
@@ -299,7 +299,7 @@ HTTP server, you are definitely executing
 62
 00:03:19.927 --> 00:03:24.738
 a lot of code that was written in C++,
-nearly the JavaScript Virtual Machine, V8.
+namely the JavaScript Virtual Machine, V8.
 
 63
 00:03:24.738 --> 00:03:30.384
@@ -381,12 +381,12 @@ that if you wanna learn how to do Rust.
 79
 00:04:18.020 --> 00:04:21.220
 Zig, also very nice language,
-you might go see the terminal
+you might use Ghostty the terminal
 
 80
 00:04:21.220 --> 00:04:25.881
-emulator bond in the JavaScript ecosystem,
-you might've heard of tiger beetle rock.
+emulator. Bun in the JavaScript ecosystem,
+you might've heard of TigerBeetle, Roc,
 
 81
 00:04:25.881 --> 00:04:30.527
@@ -395,12 +395,12 @@ the process as we speak of rewriting our
 
 82
 00:04:30.527 --> 00:04:32.088
-compiler from rust to Zig.
+compiler from Rust to Zig.
 
 83
 00:04:32.088 --> 00:04:35.659
-And there's plenty of other,
-this is like D, Odin, JAI, Carbon,
+And there's plenty of others.
+There's like D, Odin, JAI, Carbon,
 
 84
 00:04:35.659 --> 00:04:40.032

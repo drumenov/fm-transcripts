@@ -35,7 +35,7 @@ And we're gonna talk about these constants. This is the interesting part here, t
 And so what this is doing is it's saying, I wanna pass in the address of this integer, and then setsockopt is actually going to mutate that integer. So this is the same kind of pattern as what we saw earlier with memcopy. Where we were like, hey, I'm gonna give you the address of these bytes, I want you to stomp all over them.
 
 [00:03:18]
-Or what we saw later on with fsat, where we're like, hey, here's this struct. I'm gonna give you the address, I want you to stomp all over it. Now we're doing that same thing, but we're doing it with an individual integer. So there's really no limit to how much C [LAUGH] libraries will use this pattern.
+Or what we saw later on with fstat, where we're like, hey, here's this struct. I'm gonna give you the address, I want you to stomp all over it. Now we're doing that same thing, but we're doing it with an individual integer. So there's really no limit to how much C [LAUGH] libraries will use this pattern.
 
 [00:03:30]
 Once again, this is C standard library, ships with the operating system. And it's like, yeah, give me the address of this integer, I'm going to stomp all over it when you call me, that's how these things work. Or, sorry, it potentially will stomp all over it, it doesn't necessarily have to.
@@ -68,7 +68,7 @@ Okay, yeah, so this is just kind of a weird API for how they decided to do that.
 I chose localhost:8080, you can choose whatever you want. Some of them use like 3000 or 1337 or 8000 or something like that, just went with 8080, it's one of the common ones. Basically, we're making this struct. Once again, we are initially declaring this struct as just empty plain old bytes here.
 
 [00:06:19]
-So this is all initialized memory, and then we're just gonna go through and initialize that. We're gonna say address.sin_family = AF_INET, this is IPv4 again. [COUGH] Then, within this thing, we're setting the s_addr. Worth noting that this thing right here is another struct that's uninitialized, we're only setting one field in that struct.
+So this is all uninitialized memory, and then we're just gonna go through and initialize that. We're gonna say address.sin_family = AF_INET, this is IPv4 again. [COUGH] Then, within this thing, we're setting the s_addr. Worth noting that this thing right here is another struct that's uninitialized, we're only setting one field in that struct.
 
 [00:06:38]
 Again, [LAUGH] this is C, sometimes the APIs are kind of strange. And this is basically saying, I don't care, I just want any address, which means the other fields are just gonna be ignored. So we don't even bother to initialize them. And then finally we have the port.
@@ -101,7 +101,7 @@ And so bind wants you to essentially say, hey, tell me about the actual subset o
 So again, a little bit of a strange API there, but nothing that we haven't seen before. It's just might feel a little bit strange and kind of unergonomic. Yeah, so this is just the the casting to say, okay, we're treating this memory address as a sockaddr address, rather than a sockaddr_in address.
 
 [00:09:31]
-As opposed to sockaddr, I think it's in6 is the IPv6 version of that, in6, that's what it is, right? So basically, what this is doing is saying, okay, we have the first two fields of sockaddr_in, which is sa_family_t, and uint16_t for the port. Same kind of basic thing right here, in6 has these same two first fields.
+As opposed to sockaddr, I think it's in6 is the IPv6 version of that. In6, that's what it is, right. So basically, what this is doing is saying, okay, we have the first two fields of sockaddr_in, which is sa_family_t, and uint16_t for the port. Same kind of basic thing right here, in6 has these same two first fields.
 
 [00:09:51]
 And sockaddr, the sort of generic struct that is like, I'm sort of compatible with either of these. The first field is the same, so this is the subset that we care about. The sa_family refers to either the sin6 family or the sin family, depending on it's IPv6 or IPv4.
